@@ -1969,7 +1969,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <class number="0" name="default" width="0" drill="0">
 </class>
 </classes>
-<designrules name="default">
+<designrules name="default *">
 <description language="de">&lt;b&gt;EAGLE Design Rules&lt;/b&gt;
 &lt;p&gt;
 Die Standard-Design-Rules sind so gewählt, dass sie für 
@@ -1987,19 +1987,19 @@ design rules under a new name.</description>
 <param name="layerSetup" value="(1*16)"/>
 <param name="mtCopper" value="0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm 0.035mm"/>
 <param name="mtIsolate" value="1.5mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm 0.15mm 0.2mm"/>
-<param name="mdWireWire" value="8mil"/>
-<param name="mdWirePad" value="8mil"/>
-<param name="mdWireVia" value="8mil"/>
-<param name="mdPadPad" value="8mil"/>
-<param name="mdPadVia" value="8mil"/>
-<param name="mdViaVia" value="8mil"/>
+<param name="mdWireWire" value="10mil"/>
+<param name="mdWirePad" value="10mil"/>
+<param name="mdWireVia" value="10mil"/>
+<param name="mdPadPad" value="2mil"/>
+<param name="mdPadVia" value="10mil"/>
+<param name="mdViaVia" value="10mil"/>
 <param name="mdSmdPad" value="8mil"/>
 <param name="mdSmdVia" value="8mil"/>
-<param name="mdSmdSmd" value="8mil"/>
+<param name="mdSmdSmd" value="2mil"/>
 <param name="mdViaViaSameLayer" value="8mil"/>
 <param name="mnLayersViaInSmd" value="2"/>
-<param name="mdCopperDimension" value="40mil"/>
-<param name="mdDrill" value="8mil"/>
+<param name="mdCopperDimension" value="0mil"/>
+<param name="mdDrill" value="10mil"/>
 <param name="mdSmdStop" value="0mil"/>
 <param name="msWidth" value="10mil"/>
 <param name="msDrill" value="24mil"/>
@@ -2202,8 +2202,8 @@ design rules under a new name.</description>
 </element>
 <element name="U3" library="hf" package="TQFP32-08" value="ATMEGA32U2" x="128.27" y="6.35" rot="R270"/>
 <element name="C22" library="rcl" package="C0603" value="1u" x="135.255" y="3.429"/>
-<element name="C23" library="rcl" package="C0603" value="18p" x="132.207" y="16.256"/>
-<element name="C24" library="rcl" package="C0603" value="18p" x="129.286" y="16.256" rot="R180"/>
+<element name="C23" library="rcl" package="C0603" value="18p" x="132.461" y="16.383"/>
+<element name="C24" library="rcl" package="C0603" value="18p" x="129.286" y="16.383" rot="R180"/>
 <element name="R23" library="rcl" package="R0603" value="22" x="148.082" y="9.398" rot="R180"/>
 <element name="R24" library="rcl" package="R0603" value="22" x="148.082" y="11.557" rot="R180"/>
 <element name="X2" library="SparkFun" package="USB-MINIB" value="USBSMD" x="153.67" y="10.16" rot="R180"/>
@@ -2361,9 +2361,9 @@ design rules under a new name.</description>
 <wire x1="141.8289" y1="15.113" x2="142.279" y2="17.653" width="0" layer="19" extent="1-1"/>
 <wire x1="137.414" y1="12.065" x2="141.8289" y2="15.113" width="0" layer="19" extent="1-16"/>
 <wire x1="141.873" y1="12.7" x2="141.8289" y2="15.113" width="0" layer="19" extent="1-1"/>
-<wire x1="131.357" y1="16.256" x2="137.414" y2="12.065" width="0" layer="19" extent="1-16"/>
-<wire x1="130.136" y1="16.256" x2="131.357" y2="16.256" width="0" layer="19" extent="1-1"/>
-<wire x1="126.48" y1="16.256" x2="130.136" y2="16.256" width="0" layer="19" extent="1-1"/>
+<wire x1="131.611" y1="16.383" x2="137.414" y2="12.065" width="0" layer="19" extent="1-16"/>
+<wire x1="130.136" y1="16.383" x2="131.611" y2="16.383" width="0" layer="19" extent="1-1"/>
+<wire x1="126.48" y1="16.256" x2="130.136" y2="16.383" width="0" layer="19" extent="1-1"/>
 <wire x1="126.619" y1="14.058" x2="126.48" y2="16.256" width="0" layer="19" extent="1-1"/>
 <wire x1="129.47" y1="10.6426" x2="126.619" y2="14.058" width="0" layer="19" extent="1-1"/>
 <wire x1="134.405" y1="8.128" x2="129.47" y2="10.6426" width="0" layer="19" extent="1-1"/>
@@ -2682,14 +2682,14 @@ design rules under a new name.</description>
 <contactref element="U3" pad="1"/>
 <contactref element="C23" pad="2"/>
 <contactref element="Q1" pad="P$2"/>
-<wire x1="131.07" y1="10.6426" x2="133.057" y2="16.256" width="0" layer="19" extent="1-1"/>
+<wire x1="131.07" y1="10.6426" x2="133.311" y2="16.383" width="0" layer="19" extent="1-1"/>
 <wire x1="132.883" y1="13.462" x2="131.07" y2="10.6426" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$21">
 <contactref element="U3" pad="2"/>
 <contactref element="C24" pad="2"/>
 <contactref element="Q1" pad="P$1"/>
-<wire x1="130.27" y1="10.6426" x2="128.436" y2="16.256" width="0" layer="19" extent="1-1"/>
+<wire x1="130.27" y1="10.6426" x2="128.436" y2="16.383" width="0" layer="19" extent="1-1"/>
 <wire x1="128.483" y1="13.462" x2="130.27" y2="10.6426" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$22">
@@ -2887,6 +2887,14 @@ design rules under a new name.</description>
 <wire x1="124.587" y1="12.358" x2="127.07" y2="10.6426" width="0" layer="19" extent="1-1"/>
 </signal>
 </signals>
+<errors>
+<approved hash="3,1,8baa856a85ef8b2f"/>
+<approved hash="3,1,b61a27da2729b6e9"/>
+<approved hash="3,1,806e62ae622a80ea"/>
+<approved hash="19,1,26d39ce68e14d6dc"/>
+<approved hash="19,1,da95d937e17a9c26"/>
+<approved hash="19,1,64ab978dd83e38e6"/>
+</errors>
 </board>
 </drawing>
 </eagle>
