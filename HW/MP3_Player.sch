@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.1" altunitdist="mm" altunit="mm"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -12070,13 +12070,10 @@ Downside is forward voltage drop</text>
 </net>
 <net name="PWM_LEFT" class="0">
 <segment>
-<pinref part="R16" gate="G$1" pin="2"/>
-<wire x1="177.8" y1="73.66" x2="177.8" y2="78.74" width="0.1524" layer="91"/>
-<pinref part="S5" gate="G$1" pin="1"/>
-<wire x1="177.8" y1="78.74" x2="177.8" y2="106.68" width="0.1524" layer="91"/>
 <pinref part="U3" gate="G$1" pin="(XCK_AIN4/PCINT12)PD5"/>
 <wire x1="142.24" y1="78.74" x2="177.8" y2="78.74" width="0.1524" layer="91"/>
-<junction x="177.8" y="78.74"/>
+<pinref part="R16" gate="G$1" pin="2"/>
+<wire x1="177.8" y1="78.74" x2="177.8" y2="73.66" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$29" class="0">
