@@ -10812,8 +10812,8 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="JP3" library="SparkFun-Passives" deviceset="JUMPER-PAD-3-2OF3_NC_BY_TRACE" device="_SMALL" value=""/>
 <part name="JP4" library="SparkFun-Passives" deviceset="JUMPER-PAD-3-2OF3_NC_BY_TRACE" device="_SMALL" value=""/>
 <part name="GND32" library="SparkFun" deviceset="GND" device=""/>
-<part name="C21" library="SparkFun-Capacitors" deviceset="CAP_POL" device="1206"/>
-<part name="C25" library="SparkFun-Capacitors" deviceset="CAP_POL" device="1206"/>
+<part name="C21" library="SparkFun-Capacitors" deviceset="CAP_POL" device="1206" value="10uF"/>
+<part name="C25" library="SparkFun-Capacitors" deviceset="CAP_POL" device="1206" value="10uF"/>
 <part name="J3" library="pero_library" deviceset="USD-SDIO-SOCKET" device="JLH"/>
 <part name="R18" library="rcl" deviceset="R-EU_" device="R0603" value="330"/>
 <part name="LED2" library="SparkFun-LED" deviceset="LED-RED" device="0603" value="RED"/>
@@ -10822,6 +10822,12 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="S6" library="pero_library" deviceset="SWITCH-BUTTON-SKSGAAE010" device="" value="Vol Down"/>
 <part name="R8" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="GND7" library="SparkFun" deviceset="GND" device=""/>
+<part name="R12" library="rcl" deviceset="R-EU_" device="R0603" value="68"/>
+<part name="C26" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF"/>
+<part name="GND17" library="SparkFun" deviceset="GND" device=""/>
+<part name="R19" library="rcl" deviceset="R-EU_" device="R0603" value="68"/>
+<part name="C27" library="rcl" deviceset="C-EU" device="C0603" value="0.1uF"/>
+<part name="GND22" library="SparkFun" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -10831,7 +10837,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <wire x1="360.68" y1="162.56" x2="220.98" y2="162.56" width="0.2032" layer="97" style="longdash"/>
 <text x="251.46" y="172.72" size="2.54" layer="97" ratio="15">uSD Interface</text>
 <text x="109.22" y="170.18" size="2.54" layer="97" ratio="15">Power</text>
-<text x="304.8" y="154.24" size="2.54" layer="97" ratio="15">Line Out to 
+<text x="350.52" y="166.94" size="2.54" layer="97" ratio="15">Line Out to 
 Speakers or Amplifier</text>
 <text x="259.08" y="45.72" size="2.54" layer="97" ratio="15">MP3 Decoder</text>
 <text x="121.92" y="215.9" size="1.778" layer="97">150mA</text>
@@ -10872,18 +10878,18 @@ Downside is forward voltage drop</text>
 <instance part="R1" gate="G$1" x="213.36" y="101.6" smashed="yes" rot="R90">
 <attribute name="NAME" x="211.0486" y="98.806" size="1.778" layer="95" rot="R270"/>
 </instance>
-<instance part="C9" gate="G$1" x="307.34" y="99.06" smashed="yes" rot="R180">
-<attribute name="NAME" x="309.056" y="97.06" size="1.778" layer="95"/>
+<instance part="C9" gate="G$1" x="302.26" y="83.82" smashed="yes" rot="R180">
+<attribute name="NAME" x="303.976" y="81.82" size="1.778" layer="95"/>
 </instance>
 <instance part="R2" gate="G$1" x="294.64" y="134.62" rot="R90"/>
 <instance part="R3" gate="G$1" x="233.68" y="78.74" rot="R90"/>
 <instance part="R5" gate="G$1" x="223.52" y="73.66" rot="R90"/>
-<instance part="R6" gate="G$1" x="335.28" y="91.44" rot="MR90"/>
-<instance part="R7" gate="G$1" x="335.28" y="127" rot="MR90"/>
-<instance part="R9" gate="G$1" x="335.28" y="53.34" rot="MR90"/>
-<instance part="C10" gate="G$1" x="335.28" y="81.28" rot="MR0"/>
-<instance part="C11" gate="G$1" x="335.28" y="116.84" rot="MR0"/>
-<instance part="C12" gate="G$1" x="335.28" y="43.18" rot="MR0"/>
+<instance part="R6" gate="G$1" x="325.12" y="53.34" rot="MR90"/>
+<instance part="R7" gate="G$1" x="345.44" y="124.46" rot="MR90"/>
+<instance part="R9" gate="G$1" x="345.44" y="53.34" rot="MR90"/>
+<instance part="C10" gate="G$1" x="325.12" y="43.18" rot="MR0"/>
+<instance part="C11" gate="G$1" x="345.44" y="114.3" rot="MR0"/>
+<instance part="C12" gate="G$1" x="345.44" y="43.18" rot="MR0"/>
 <instance part="U2" gate="G$1" x="129.54" y="198.12"/>
 <instance part="GND2" gate="1" x="116.84" y="220.98"/>
 <instance part="GND3" gate="1" x="147.32" y="220.98"/>
@@ -10893,8 +10899,8 @@ Downside is forward voltage drop</text>
 <instance part="GND8" gate="1" x="195.58" y="88.9"/>
 <instance part="GND10" gate="1" x="251.46" y="60.96"/>
 <instance part="GND11" gate="1" x="269.24" y="60.96"/>
-<instance part="GND12" gate="1" x="307.34" y="60.96"/>
-<instance part="GND13" gate="1" x="335.28" y="71.12" rot="MR0"/>
+<instance part="GND12" gate="1" x="302.26" y="60.96"/>
+<instance part="GND13" gate="1" x="325.12" y="33.02" rot="MR0"/>
 <instance part="GND15" gate="1" x="157.48" y="220.98"/>
 <instance part="P+2" gate="G$1" x="248.92" y="144.78"/>
 <instance part="P+3" gate="G$1" x="271.78" y="144.78"/>
@@ -10920,8 +10926,8 @@ Downside is forward voltage drop</text>
 <instance part="P+10" gate="G$1" x="248.92" y="228.6"/>
 <instance part="GND16" gate="1" x="248.92" y="190.5"/>
 <instance part="P+12" gate="G$1" x="220.98" y="144.78"/>
-<instance part="GND37" gate="1" x="335.28" y="33.02" rot="MR0"/>
-<instance part="GND38" gate="1" x="335.28" y="106.68" rot="MR0"/>
+<instance part="GND37" gate="1" x="345.44" y="33.02" rot="MR0"/>
+<instance part="GND38" gate="1" x="345.44" y="104.14" rot="MR0"/>
 <instance part="GND33" gate="1" x="223.52" y="60.96"/>
 <instance part="R17" gate="G$1" x="78.74" y="137.16" rot="R90"/>
 <instance part="GND28" gate="1" x="58.42" y="124.46"/>
@@ -11040,11 +11046,11 @@ Downside is forward voltage drop</text>
 </instance>
 <instance part="Q1" gate="G$1" x="68.58" y="93.98" rot="R90"/>
 <instance part="JP2" gate="G$1" x="345.44" y="139.7" rot="R180"/>
-<instance part="JP3" gate="G$1" x="345.44" y="106.68" rot="R180"/>
-<instance part="JP4" gate="G$1" x="345.44" y="66.04" rot="R180"/>
-<instance part="GND32" gate="1" x="345.44" y="76.2" rot="MR180"/>
+<instance part="JP3" gate="G$1" x="345.44" y="81.28" rot="R180"/>
+<instance part="JP4" gate="G$1" x="353.06" y="60.96" rot="MR270"/>
+<instance part="GND32" gate="1" x="363.22" y="50.8" rot="MR0"/>
 <instance part="C21" gate="G$1" x="345.44" y="152.4"/>
-<instance part="C25" gate="G$1" x="345.44" y="119.38"/>
+<instance part="C25" gate="G$1" x="345.44" y="93.98"/>
 <instance part="J3" gate="G$1" x="256.54" y="193.04"/>
 <instance part="R18" gate="G$1" x="190.5" y="73.66" rot="R90"/>
 <instance part="LED2" gate="G$1" x="190.5" y="63.5"/>
@@ -11059,6 +11065,12 @@ Downside is forward voltage drop</text>
 <attribute name="VALUE" x="186.182" y="67.31" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="GND7" gate="1" x="172.72" y="48.26"/>
+<instance part="R12" gate="G$1" x="317.5" y="157.48" rot="MR0"/>
+<instance part="C26" gate="G$1" x="327.66" y="152.4"/>
+<instance part="GND17" gate="1" x="327.66" y="142.24" rot="MR0"/>
+<instance part="R19" gate="G$1" x="327.66" y="96.52" rot="MR0"/>
+<instance part="C27" gate="G$1" x="335.28" y="91.44"/>
+<instance part="GND22" gate="1" x="335.28" y="81.28" rot="MR0"/>
 </instances>
 <busses>
 </busses>
@@ -11121,17 +11133,17 @@ Downside is forward voltage drop</text>
 <segment>
 <pinref part="GND37" gate="1" pin="GND"/>
 <pinref part="C12" gate="G$1" pin="2"/>
-<wire x1="335.28" y1="38.1" x2="335.28" y2="35.56" width="0.1524" layer="91"/>
+<wire x1="345.44" y1="38.1" x2="345.44" y2="35.56" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND38" gate="1" pin="GND"/>
 <pinref part="C11" gate="G$1" pin="2"/>
-<wire x1="335.28" y1="111.76" x2="335.28" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="345.44" y1="109.22" x2="345.44" y2="106.68" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C10" gate="G$1" pin="2"/>
 <pinref part="GND13" gate="1" pin="GND"/>
-<wire x1="335.28" y1="76.2" x2="335.28" y2="73.66" width="0.1524" layer="91"/>
+<wire x1="325.12" y1="38.1" x2="325.12" y2="35.56" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="198.12" y1="109.22" x2="195.58" y2="109.22" width="0.1524" layer="91"/>
@@ -11146,7 +11158,7 @@ Downside is forward voltage drop</text>
 <segment>
 <pinref part="C9" gate="G$1" pin="1"/>
 <pinref part="GND12" gate="1" pin="GND"/>
-<wire x1="307.34" y1="96.52" x2="307.34" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="302.26" y1="81.28" x2="302.26" y2="63.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="147.32" y1="193.04" x2="147.32" y2="190.5" width="0.1524" layer="91"/>
@@ -11328,11 +11340,6 @@ Downside is forward voltage drop</text>
 <wire x1="210.82" y1="129.54" x2="210.82" y2="127" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="GND32" gate="1" pin="GND"/>
-<pinref part="JP4" gate="G$1" pin="3"/>
-<wire x1="345.44" y1="73.66" x2="345.44" y2="71.12" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <wire x1="190.5" y1="50.8" x2="190.5" y2="58.42" width="0.1524" layer="91"/>
 <pinref part="GND35" gate="1" pin="GND"/>
 <pinref part="LED2" gate="G$1" pin="C"/>
@@ -11357,6 +11364,22 @@ Downside is forward voltage drop</text>
 <pinref part="R15" gate="G$1" pin="1"/>
 <pinref part="R14" gate="G$1" pin="1"/>
 <pinref part="R10" gate="G$1" pin="1"/>
+</segment>
+<segment>
+<pinref part="C26" gate="G$1" pin="2"/>
+<pinref part="GND17" gate="1" pin="GND"/>
+<wire x1="327.66" y1="147.32" x2="327.66" y2="144.78" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="JP4" gate="G$1" pin="3"/>
+<pinref part="GND32" gate="1" pin="GND"/>
+<wire x1="358.14" y1="60.96" x2="363.22" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="363.22" y1="60.96" x2="363.22" y2="53.34" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="C27" gate="G$1" pin="2"/>
+<pinref part="GND22" gate="1" pin="GND"/>
+<wire x1="335.28" y1="86.36" x2="335.28" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="VCC" class="0">
@@ -11419,13 +11442,13 @@ Downside is forward voltage drop</text>
 <label x="292.1" y="119.38" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<wire x1="345.44" y1="134.62" x2="335.28" y2="134.62" width="0.1524" layer="91"/>
-<label x="332.74" y="134.62" size="1.27" layer="95" rot="MR0" xref="yes"/>
-<pinref part="JP2" gate="G$1" pin="1"/>
+<label x="307.34" y="132.08" size="1.27" layer="95" rot="MR0" xref="yes"/>
 <pinref part="R7" gate="G$1" pin="2"/>
-<wire x1="335.28" y1="134.62" x2="332.74" y2="134.62" width="0.1524" layer="91"/>
-<wire x1="335.28" y1="132.08" x2="335.28" y2="134.62" width="0.1524" layer="91"/>
-<junction x="335.28" y="134.62"/>
+<wire x1="345.44" y1="132.08" x2="307.34" y2="132.08" width="0.1524" layer="91"/>
+<wire x1="345.44" y1="129.54" x2="345.44" y2="132.08" width="0.1524" layer="91"/>
+<pinref part="JP2" gate="G$1" pin="1"/>
+<wire x1="345.44" y1="132.08" x2="345.44" y2="134.62" width="0.1524" layer="91"/>
+<junction x="345.44" y="132.08"/>
 </segment>
 </net>
 <net name="RIGHT" class="0">
@@ -11435,19 +11458,14 @@ Downside is forward voltage drop</text>
 <label x="292.1" y="116.84" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="JP1" gate="G$1" pin="RIGHT"/>
-<wire x1="350.52" y1="137.16" x2="368.3" y2="137.16" width="0.1524" layer="91"/>
-<pinref part="JP3" gate="G$1" pin="2"/>
-<wire x1="350.52" y1="106.68" x2="350.52" y2="137.16" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<wire x1="332.74" y1="101.6" x2="335.28" y2="101.6" width="0.1524" layer="91"/>
+<wire x1="317.5" y1="66.04" x2="325.12" y2="66.04" width="0.1524" layer="91"/>
 <pinref part="R6" gate="G$1" pin="2"/>
-<wire x1="335.28" y1="96.52" x2="335.28" y2="101.6" width="0.1524" layer="91"/>
-<label x="332.74" y="101.6" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<wire x1="325.12" y1="58.42" x2="325.12" y2="66.04" width="0.1524" layer="91"/>
+<label x="317.5" y="66.04" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<junction x="325.12" y="66.04"/>
 <pinref part="JP3" gate="G$1" pin="1"/>
-<wire x1="335.28" y1="101.6" x2="345.44" y2="101.6" width="0.1524" layer="91"/>
-<junction x="335.28" y="101.6"/>
+<wire x1="325.12" y1="66.04" x2="345.44" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="345.44" y1="66.04" x2="345.44" y2="76.2" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="GBUF" class="0">
@@ -11457,46 +11475,32 @@ Downside is forward voltage drop</text>
 <label x="292.1" y="114.3" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="JP1" gate="G$1" pin="SLEEVE"/>
-<wire x1="353.06" y1="134.62" x2="368.3" y2="134.62" width="0.1524" layer="91"/>
-<pinref part="JP4" gate="G$1" pin="2"/>
-<wire x1="353.06" y1="66.04" x2="353.06" y2="134.62" width="0.1524" layer="91"/>
-<wire x1="350.52" y1="66.04" x2="353.06" y2="66.04" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="R9" gate="G$1" pin="2"/>
-<wire x1="335.28" y1="58.42" x2="335.28" y2="60.96" width="0.1524" layer="91"/>
-<wire x1="335.28" y1="60.96" x2="332.74" y2="60.96" width="0.1524" layer="91"/>
-<label x="332.74" y="60.96" size="1.27" layer="95" rot="MR0" xref="yes"/>
+<wire x1="345.44" y1="58.42" x2="345.44" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="345.44" y1="60.96" x2="342.9" y2="60.96" width="0.1524" layer="91"/>
+<label x="342.9" y="60.96" size="1.27" layer="95" rot="MR0" xref="yes"/>
 <pinref part="JP4" gate="G$1" pin="1"/>
-<wire x1="335.28" y1="60.96" x2="345.44" y2="60.96" width="0.1524" layer="91"/>
-<junction x="335.28" y="60.96"/>
-</segment>
-</net>
-<net name="RCAP" class="0">
-<segment>
-<wire x1="287.02" y1="104.14" x2="307.34" y2="104.14" width="0.1524" layer="91"/>
-<pinref part="U4" gate="G$1" pin="RCAP"/>
-<pinref part="C9" gate="G$1" pin="2"/>
+<wire x1="345.44" y1="60.96" x2="347.98" y2="60.96" width="0.1524" layer="91"/>
+<junction x="345.44" y="60.96"/>
 </segment>
 </net>
 <net name="N$2" class="0">
 <segment>
-<wire x1="335.28" y1="48.26" x2="335.28" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="345.44" y1="48.26" x2="345.44" y2="45.72" width="0.1524" layer="91"/>
 <pinref part="R9" gate="G$1" pin="1"/>
 <pinref part="C12" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$5" class="0">
 <segment>
-<wire x1="335.28" y1="121.92" x2="335.28" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="345.44" y1="119.38" x2="345.44" y2="116.84" width="0.1524" layer="91"/>
 <pinref part="R7" gate="G$1" pin="1"/>
 <pinref part="C11" gate="G$1" pin="1"/>
 </segment>
 </net>
 <net name="N$3" class="0">
 <segment>
-<wire x1="335.28" y1="83.82" x2="335.28" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="325.12" y1="45.72" x2="325.12" y2="48.26" width="0.1524" layer="91"/>
 <pinref part="R6" gate="G$1" pin="1"/>
 <pinref part="C10" gate="G$1" pin="1"/>
 </segment>
@@ -12125,13 +12129,6 @@ Downside is forward voltage drop</text>
 <label x="147.32" y="114.3" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
-<net name="N$14" class="0">
-<segment>
-<pinref part="JP2" gate="G$1" pin="2"/>
-<wire x1="350.52" y1="139.7" x2="368.3" y2="139.7" width="0.1524" layer="91"/>
-<pinref part="JP1" gate="G$1" pin="LEFT"/>
-</segment>
-</net>
 <net name="PWM_R" class="0">
 <segment>
 <pinref part="U3" gate="G$1" pin="(PCINT9/OC.1B)PC5"/>
@@ -12139,9 +12136,9 @@ Downside is forward voltage drop</text>
 <label x="147.32" y="101.6" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="C25" gate="G$1" pin="+"/>
-<wire x1="345.44" y1="121.92" x2="345.44" y2="124.46" width="0.1524" layer="91"/>
-<label x="345.44" y="124.46" size="1.016" layer="95" rot="R90" xref="yes"/>
+<pinref part="R19" gate="G$1" pin="2"/>
+<wire x1="317.5" y1="96.52" x2="322.58" y2="96.52" width="0.1524" layer="91"/>
+<label x="317.5" y="96.52" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="PWM_L" class="0">
@@ -12151,10 +12148,9 @@ Downside is forward voltage drop</text>
 <label x="147.32" y="99.06" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="C21" gate="G$1" pin="+"/>
-<label x="353.06" y="157.48" size="1.016" layer="95" xref="yes"/>
-<wire x1="345.44" y1="154.94" x2="345.44" y2="157.48" width="0.1524" layer="91"/>
-<wire x1="345.44" y1="157.48" x2="353.06" y2="157.48" width="0.1524" layer="91"/>
+<pinref part="R12" gate="G$1" pin="2"/>
+<wire x1="312.42" y1="157.48" x2="309.88" y2="157.48" width="0.1524" layer="91"/>
+<label x="309.88" y="157.48" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="N$25" class="0">
@@ -12168,7 +12164,7 @@ Downside is forward voltage drop</text>
 <segment>
 <pinref part="C25" gate="G$1" pin="-"/>
 <pinref part="JP3" gate="G$1" pin="3"/>
-<wire x1="345.44" y1="114.3" x2="345.44" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="345.44" y1="88.9" x2="345.44" y2="86.36" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$12" class="0">
@@ -12241,6 +12237,60 @@ Downside is forward voltage drop</text>
 <wire x1="142.24" y1="76.2" x2="182.88" y2="76.2" width="0.1524" layer="91"/>
 <junction x="182.88" y="76.2"/>
 <pinref part="R8" gate="G$1" pin="2"/>
+</segment>
+</net>
+<net name="N$13" class="0">
+<segment>
+<pinref part="JP4" gate="G$1" pin="2"/>
+<wire x1="353.06" y1="66.04" x2="353.06" y2="134.62" width="0.1524" layer="91"/>
+<pinref part="JP1" gate="G$1" pin="SLEEVE"/>
+<wire x1="353.06" y1="134.62" x2="368.3" y2="134.62" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$14" class="0">
+<segment>
+<pinref part="JP2" gate="G$1" pin="2"/>
+<pinref part="JP1" gate="G$1" pin="LEFT"/>
+<wire x1="350.52" y1="139.7" x2="368.3" y2="139.7" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$31" class="0">
+<segment>
+<pinref part="JP3" gate="G$1" pin="2"/>
+<wire x1="350.52" y1="81.28" x2="350.52" y2="137.16" width="0.1524" layer="91"/>
+<pinref part="JP1" gate="G$1" pin="RIGHT"/>
+<wire x1="350.52" y1="137.16" x2="368.3" y2="137.16" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="PWM_L1" class="0">
+<segment>
+<pinref part="R19" gate="G$1" pin="1"/>
+<pinref part="C27" gate="G$1" pin="1"/>
+<wire x1="332.74" y1="96.52" x2="335.28" y2="96.52" width="0.1524" layer="91"/>
+<wire x1="335.28" y1="96.52" x2="335.28" y2="93.98" width="0.1524" layer="91"/>
+<pinref part="C25" gate="G$1" pin="+"/>
+<wire x1="335.28" y1="96.52" x2="345.44" y2="96.52" width="0.1524" layer="91"/>
+<junction x="335.28" y="96.52"/>
+</segment>
+</net>
+<net name="N$33" class="0">
+<segment>
+<pinref part="U4" gate="G$1" pin="RCAP"/>
+<wire x1="287.02" y1="104.14" x2="302.26" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="302.26" y1="104.14" x2="302.26" y2="88.9" width="0.1524" layer="91"/>
+<pinref part="C9" gate="G$1" pin="2"/>
+</segment>
+</net>
+<net name="N$32" class="0">
+<segment>
+<pinref part="R12" gate="G$1" pin="1"/>
+<pinref part="C21" gate="G$1" pin="+"/>
+<wire x1="322.58" y1="157.48" x2="327.66" y2="157.48" width="0.1524" layer="91"/>
+<wire x1="327.66" y1="157.48" x2="345.44" y2="157.48" width="0.1524" layer="91"/>
+<wire x1="345.44" y1="157.48" x2="345.44" y2="154.94" width="0.1524" layer="91"/>
+<pinref part="C26" gate="G$1" pin="1"/>
+<wire x1="327.66" y1="154.94" x2="327.66" y2="157.48" width="0.1524" layer="91"/>
+<junction x="327.66" y="157.48"/>
 </segment>
 </net>
 </nets>
