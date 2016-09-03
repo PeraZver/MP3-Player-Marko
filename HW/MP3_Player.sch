@@ -10260,6 +10260,9 @@ Downside is forward voltage drop</text>
 <wire x1="142.24" y1="78.74" x2="177.8" y2="78.74" width="0.1524" layer="91"/>
 <pinref part="R16" gate="G$1" pin="2"/>
 <wire x1="177.8" y1="78.74" x2="177.8" y2="73.66" width="0.1524" layer="91"/>
+<pinref part="S5" gate="G$1" pin="1"/>
+<wire x1="177.8" y1="106.68" x2="177.8" y2="78.74" width="0.1524" layer="91"/>
+<junction x="177.8" y="78.74"/>
 </segment>
 </net>
 <net name="N$29" class="0">
