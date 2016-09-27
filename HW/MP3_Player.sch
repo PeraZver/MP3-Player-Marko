@@ -8754,20 +8754,17 @@ Max. current: 50 mA</description>
 </package>
 <package name="UG-2832HSWEG04">
 <description>128x32 OLED Display - 0.91" (30x11.5mm)</description>
-<wire x1="0" y1="5.575" x2="-30" y2="5.575" width="0.127" layer="51"/>
-<wire x1="0" y1="-5.75" x2="-30" y2="-5.75" width="0.127" layer="51"/>
-<wire x1="-30" y1="5.575" x2="-30" y2="-5.575" width="0.127" layer="51"/>
-<wire x1="0" y1="5.575" x2="0" y2="-5.575" width="0.127" layer="51"/>
-<wire x1="-5.516" y1="3.475" x2="-27.9" y2="3.475" width="0.2032" layer="51" style="shortdash"/>
-<wire x1="-5.516" y1="-2.109" x2="-27.9" y2="-2.109" width="0.2032" layer="51" style="shortdash"/>
-<wire x1="-5.516" y1="3.475" x2="-5.516" y2="-2.109" width="0.2032" layer="51" style="shortdash"/>
-<wire x1="-27.9" y1="3.475" x2="-27.9" y2="-2.109" width="0.2032" layer="51" style="shortdash"/>
-<wire x1="0" y1="5.575" x2="-30" y2="5.575" width="0.2032" layer="21"/>
-<wire x1="0" y1="5.575" x2="0" y2="3.81" width="0.2032" layer="21"/>
-<wire x1="0" y1="3.81" x2="0" y2="-5.08" width="0.2032" layer="21"/>
-<wire x1="0" y1="-5.08" x2="0" y2="-5.575" width="0.2032" layer="21"/>
-<wire x1="0" y1="-5.75" x2="-30" y2="-5.75" width="0.2032" layer="21"/>
-<wire x1="-30" y1="5.575" x2="-30" y2="-5.575" width="0.2032" layer="21"/>
+<wire x1="17.78" y1="5.575" x2="-12.22" y2="5.575" width="0.127" layer="51"/>
+<wire x1="17.78" y1="-5.75" x2="-12.22" y2="-5.75" width="0.127" layer="51"/>
+<wire x1="-12.22" y1="5.575" x2="-12.22" y2="-5.575" width="0.127" layer="51"/>
+<wire x1="8.454" y1="3.475" x2="-10.12" y2="3.475" width="0.2032" layer="51" style="shortdash"/>
+<wire x1="8.454" y1="-2.109" x2="-10.12" y2="-2.109" width="0.2032" layer="51" style="shortdash"/>
+<wire x1="8.454" y1="3.475" x2="8.454" y2="-2.109" width="0.2032" layer="51" style="shortdash"/>
+<wire x1="-10.12" y1="3.475" x2="-10.12" y2="-2.109" width="0.2032" layer="51" style="shortdash"/>
+<wire x1="17.78" y1="5.575" x2="-12.22" y2="5.575" width="0.2032" layer="21"/>
+<wire x1="17.78" y1="5.575" x2="17.78" y2="-5.575" width="0.2032" layer="21"/>
+<wire x1="17.78" y1="-5.75" x2="-12.22" y2="-5.75" width="0.2032" layer="21"/>
+<wire x1="-12.22" y1="5.575" x2="-12.22" y2="-5.575" width="0.2032" layer="21"/>
 <smd name="15" x="15.8" y="4.55" dx="2.6" dy="0.35" layer="1"/>
 <smd name="14" x="15.8" y="3.9" dx="2.6" dy="0.35" layer="1"/>
 <smd name="13" x="15.8" y="3.25" dx="2.6" dy="0.35" layer="1"/>
@@ -8783,10 +8780,10 @@ Max. current: 50 mA</description>
 <smd name="3" x="15.8" y="-3.25" dx="2.6" dy="0.35" layer="1"/>
 <smd name="2" x="15.8" y="-3.9" dx="2.6" dy="0.35" layer="1"/>
 <smd name="1" x="15.8" y="-4.55" dx="2.6" dy="0.35" layer="1"/>
-<text x="-23" y="1" size="1.016" layer="51">Active Area 0.91"</text>
-<text x="-22" y="-1" size="1.016" layer="51">128x32 Pixels</text>
-<text x="-30" y="6.5" size="0.8128" layer="25" ratio="18">&gt;NAME</text>
-<text x="-30" y="-7.5" size="0.4064" layer="27" ratio="10">&gt;VALUE</text>
+<text x="-5.22" y="1" size="1.016" layer="51">Active Area 0.91"</text>
+<text x="-4.22" y="-1" size="1.016" layer="51">128x32 Pixels</text>
+<text x="-12.22" y="6.5" size="0.8128" layer="25" ratio="18">&gt;NAME</text>
+<text x="-12.22" y="-7.5" size="0.4064" layer="27" ratio="10">&gt;VALUE</text>
 <rectangle x1="14.5" y1="-0.175" x2="16.3" y2="0.175" layer="51"/>
 <rectangle x1="14.5" y1="4.375" x2="16.3" y2="4.725" layer="51"/>
 <rectangle x1="14.5" y1="3.725" x2="16.3" y2="4.075" layer="51"/>
@@ -8803,13 +8800,19 @@ Max. current: 50 mA</description>
 <rectangle x1="14.5" y1="-4.075" x2="16.3" y2="-3.725" layer="51"/>
 <rectangle x1="14.5" y1="-4.725" x2="16.3" y2="-4.375" layer="51"/>
 <circle x="16.51" y="-5.08" radius="0.254" width="0.127" layer="21"/>
-<wire x1="0" y1="3.81" x2="11.43" y2="3.81" width="0.127" layer="21"/>
-<wire x1="11.43" y1="3.81" x2="12.7" y2="5.08" width="0.127" layer="21"/>
-<wire x1="12.7" y1="5.08" x2="17.78" y2="5.08" width="0.127" layer="21"/>
+<wire x1="11.50439375" y1="3.88439375" x2="12.62560625" y2="5.00560625" width="0.127" layer="21"/>
+<wire x1="12.62560625" y1="5.00560625" x2="12.805209375" y2="5.08" width="0.127" layer="21" curve="-44.999295"/>
+<wire x1="12.805209375" y1="5.08" x2="17.78" y2="5.08" width="0.127" layer="21"/>
+<wire x1="11.50439375" y1="3.88439375" x2="11.324790625" y2="3.81" width="0.127" layer="21" curve="-44.999295"/>
+<wire x1="11.324790625" y1="3.81" x2="9.144" y2="3.81" width="0.127" layer="21"/>
 <wire x1="17.78" y1="5.08" x2="17.78" y2="-5.715" width="0.127" layer="21"/>
 <wire x1="17.78" y1="-5.715" x2="12.7" y2="-5.715" width="0.127" layer="21"/>
-<wire x1="12.7" y1="-5.715" x2="11.43" y2="-5.08" width="0.127" layer="21"/>
-<wire x1="11.43" y1="-5.08" x2="0" y2="-5.08" width="0.127" layer="21"/>
+<wire x1="12.7" y1="-5.715" x2="11.564078125" y2="-5.147040625" width="0.127" layer="21"/>
+<wire x1="11.564078125" y1="-5.147040625" x2="11.280096875" y2="-5.08" width="0.127" layer="21" curve="26.565051"/>
+<wire x1="11.280096875" y1="-5.08" x2="9.144" y2="-5.08" width="0.127" layer="21"/>
+<wire x1="9.144" y1="3.81" x2="8.89" y2="3.556" width="0.127" layer="21" curve="90"/>
+<wire x1="9.144" y1="-5.08" x2="8.89" y2="-4.826" width="0.127" layer="21" curve="-90"/>
+<wire x1="8.89" y1="-4.826" x2="8.89" y2="3.556" width="0.127" layer="21"/>
 </package>
 <package name="UG-2832HSWEG04_WRAPAROUND">
 <wire x1="0" y1="5.575" x2="-30" y2="5.575" width="0.127" layer="51"/>
@@ -10417,8 +10420,8 @@ Downside is forward voltage drop</text>
 <junction x="233.68" y="119.38"/>
 </segment>
 <segment>
-<wire x1="124.46" y1="55.88" x2="132.08" y2="55.88" width="0.1524" layer="91"/>
 <pinref part="U$3" gate="G$1" pin="PB1(SCK)"/>
+<wire x1="132.08" y1="55.88" x2="124.46" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <label x="132.08" y="55.88" size="1.27" layer="95" xref="yes"/>
@@ -10461,7 +10464,8 @@ Downside is forward voltage drop</text>
 <label x="132.08" y="93.98" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<wire x1="124.46" y1="93.98" x2="132.08" y2="93.98" width="0.1524" layer="91"/>
+<pinref part="U$3" gate="G$1" pin="PD2(RX)"/>
+<wire x1="132.08" y1="93.98" x2="124.46" y2="93.98" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MP3-DCS" class="0">
@@ -10474,10 +10478,8 @@ Downside is forward voltage drop</text>
 <label x="132.08" y="91.44" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<wire x1="127" y1="91.44" x2="132.08" y2="91.44" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<wire x1="124.46" y1="91.44" x2="132.08" y2="91.44" width="0.1524" layer="91"/>
+<pinref part="U$3" gate="G$1" pin="PD3(TX)"/>
+<wire x1="132.08" y1="91.44" x2="124.46" y2="91.44" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MP3-RST" class="0">
@@ -10496,7 +10498,8 @@ Downside is forward voltage drop</text>
 <label x="132.08" y="88.9" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<wire x1="124.46" y1="88.9" x2="132.08" y2="88.9" width="0.1524" layer="91"/>
+<pinref part="U$3" gate="G$1" pin="PD1(SDA)"/>
+<wire x1="132.08" y1="88.9" x2="124.46" y2="88.9" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MP3-DREQ" class="0">
@@ -10509,12 +10512,8 @@ Downside is forward voltage drop</text>
 <label x="132.08" y="86.36" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<wire x1="124.46" y1="86.36" x2="132.08" y2="86.36" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="SS" class="0">
-<segment>
-<wire x1="127" y1="58.42" x2="132.08" y2="58.42" width="0.1524" layer="91"/>
+<pinref part="U$3" gate="G$1" pin="PD0(SCL)"/>
+<wire x1="132.08" y1="86.36" x2="124.46" y2="86.36" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$20" class="0">
@@ -10721,7 +10720,8 @@ Downside is forward voltage drop</text>
 <label x="132.08" y="83.82" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<wire x1="124.46" y1="83.82" x2="132.08" y2="83.82" width="0.1524" layer="91"/>
+<pinref part="U$3" gate="G$1" pin="PD4(ADC8)"/>
+<wire x1="132.08" y1="83.82" x2="124.46" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SD-CS" class="0">
@@ -10751,8 +10751,9 @@ Downside is forward voltage drop</text>
 </net>
 <net name="PWM_R" class="0">
 <segment>
-<wire x1="124.46" y1="71.12" x2="132.08" y2="71.12" width="0.1524" layer="91"/>
 <label x="132.08" y="71.12" size="1.27" layer="95" xref="yes"/>
+<pinref part="U$3" gate="G$1" pin="PB5(ADC12)"/>
+<wire x1="132.08" y1="71.12" x2="124.46" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R19" gate="G$1" pin="2"/>
@@ -10762,8 +10763,9 @@ Downside is forward voltage drop</text>
 </net>
 <net name="PWM_L" class="0">
 <segment>
-<wire x1="124.46" y1="68.58" x2="132.08" y2="68.58" width="0.1524" layer="91"/>
 <label x="132.08" y="68.58" size="1.27" layer="95" xref="yes"/>
+<pinref part="U$3" gate="G$1" pin="PB6(ADC13)"/>
+<wire x1="132.08" y1="68.58" x2="124.46" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R12" gate="G$1" pin="2"/>
