@@ -8743,12 +8743,12 @@ Max. current: 50 mA</description>
 <wire x1="2.5" y1="-9" x2="4" y2="-13.5" width="0.127" layer="21"/>
 <wire x1="4" y1="-13.5" x2="4" y2="-15" width="0.127" layer="21"/>
 <wire x1="4" y1="-15" x2="2" y2="-15" width="0.127" layer="21"/>
-<wire x1="11.5" y1="-15" x2="11.5" y2="-8" width="0.127" layer="22"/>
-<wire x1="11.5" y1="-8" x2="11" y2="-8" width="0.127" layer="22"/>
-<wire x1="11" y1="-8" x2="11" y2="-9" width="0.127" layer="22"/>
-<wire x1="11" y1="-9" x2="9.5" y2="-13.5" width="0.127" layer="22"/>
-<wire x1="9.5" y1="-13.5" x2="9.5" y2="-15" width="0.127" layer="22"/>
-<wire x1="9.5" y1="-15" x2="11.5" y2="-15" width="0.127" layer="22"/>
+<wire x1="11.5" y1="-15" x2="11.5" y2="-8" width="0.127" layer="21"/>
+<wire x1="11.5" y1="-8" x2="11" y2="-8" width="0.127" layer="21"/>
+<wire x1="11" y1="-8" x2="11" y2="-9" width="0.127" layer="21"/>
+<wire x1="11" y1="-9" x2="9.5" y2="-13.5" width="0.127" layer="21"/>
+<wire x1="9.5" y1="-13.5" x2="9.5" y2="-15" width="0.127" layer="21"/>
+<wire x1="9.5" y1="-15" x2="11.5" y2="-15" width="0.127" layer="21"/>
 <text x="15.24" y="-1.27" size="1.27" layer="25" font="vector" ratio="1">&gt;NAME</text>
 <text x="15.24" y="-3.81" size="1.27" layer="27" font="vector" ratio="1">&gt;VALUE</text>
 </package>
@@ -9363,7 +9363,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="U$6" library="SparkFun" deviceset="1.8V" device=""/>
 <part name="P+5" library="SparkFun" deviceset="3.3V" device=""/>
 <part name="P+8" library="SparkFun" deviceset="3.3V" device=""/>
-<part name="J1" library="SparkFun-Connectors" deviceset="AUDIO-JACK" device="SMD2"/>
+<part name="J1" library="SparkFun-Connectors" deviceset="AUDIO-JACK" device="SMD2" value="Audio jack"/>
 <part name="P+10" library="SparkFun" deviceset="3.3V" device=""/>
 <part name="GND16" library="SparkFun" deviceset="GND" device=""/>
 <part name="P+12" library="SparkFun" deviceset="3.3V" device=""/>
@@ -9435,7 +9435,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="R18" library="rcl" deviceset="R-EU_" device="R0603" value="330"/>
 <part name="LED2" library="SparkFun-LED" deviceset="LED-RED" device="0603" value="RED"/>
 <part name="GND35" library="SparkFun" deviceset="GND" device=""/>
-<part name="J4" library="SparkFun-Connectors" deviceset="USB_MICROB_PLUG" device="CONN-11752"/>
+<part name="J4" library="SparkFun-Connectors" deviceset="USB_MICROB_PLUG" device="CONN-11752" value="micro USB"/>
 <part name="S6" library="pero_library" deviceset="SWITCH-BUTTON-SKSGAAE010" device="" value="Vol Down"/>
 <part name="R8" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="GND7" library="SparkFun" deviceset="GND" device=""/>
@@ -9445,7 +9445,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="R19" library="rcl" deviceset="R-EU_" device="R0603" value="68"/>
 <part name="C27" library="rcl" deviceset="C-EU" device="C0603" value="0.1µF"/>
 <part name="GND22" library="SparkFun" deviceset="GND" device=""/>
-<part name="U$3" library="SparkFun-DigitalIC" deviceset="ATMEGA32U4" device="QFN2"/>
+<part name="U3" library="SparkFun-DigitalIC" deviceset="ATMEGA32U4" device="QFN2"/>
 <part name="GND34" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
@@ -9701,7 +9701,7 @@ Downside is forward voltage drop</text>
 <instance part="R19" gate="G$1" x="327.66" y="96.52" rot="MR0"/>
 <instance part="C27" gate="G$1" x="335.28" y="91.44"/>
 <instance part="GND22" gate="1" x="335.28" y="81.28" rot="MR0"/>
-<instance part="U$3" gate="G$1" x="106.68" y="81.28" smashed="yes">
+<instance part="U3" gate="G$1" x="106.68" y="81.28" smashed="yes">
 <attribute name="NAME" x="91.44" y="119.38" size="1.778" layer="95"/>
 <attribute name="VALUE" x="91.44" y="38.1" size="1.778" layer="96"/>
 </instance>
@@ -10008,23 +10008,23 @@ Downside is forward voltage drop</text>
 <wire x1="335.28" y1="86.36" x2="335.28" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="UGND"/>
+<pinref part="U3" gate="G$1" pin="UGND"/>
 <wire x1="88.9" y1="53.34" x2="86.36" y2="53.34" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="53.34" x2="86.36" y2="50.8" width="0.1524" layer="91"/>
-<pinref part="U$3" gate="G$1" pin="GND@15"/>
+<pinref part="U3" gate="G$1" pin="GND@15"/>
 <wire x1="86.36" y1="50.8" x2="86.36" y2="48.26" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="48.26" x2="86.36" y2="45.72" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="45.72" x2="86.36" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="43.18" x2="86.36" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="88.9" y1="50.8" x2="86.36" y2="50.8" width="0.1524" layer="91"/>
 <junction x="86.36" y="50.8"/>
-<pinref part="U$3" gate="G$1" pin="GND@23"/>
+<pinref part="U3" gate="G$1" pin="GND@23"/>
 <wire x1="88.9" y1="48.26" x2="86.36" y2="48.26" width="0.1524" layer="91"/>
 <junction x="86.36" y="48.26"/>
-<pinref part="U$3" gate="G$1" pin="GND@35"/>
+<pinref part="U3" gate="G$1" pin="GND@35"/>
 <wire x1="88.9" y1="45.72" x2="86.36" y2="45.72" width="0.1524" layer="91"/>
 <junction x="86.36" y="45.72"/>
-<pinref part="U$3" gate="G$1" pin="GND@43"/>
+<pinref part="U3" gate="G$1" pin="GND@43"/>
 <wire x1="88.9" y1="43.18" x2="86.36" y2="43.18" width="0.1524" layer="91"/>
 <junction x="86.36" y="43.18"/>
 <pinref part="GND34" gate="1" pin="GND"/>
@@ -10285,18 +10285,18 @@ Downside is forward voltage drop</text>
 <pinref part="R17" gate="G$1" pin="2"/>
 <wire x1="76.2" y1="116.84" x2="73.66" y2="116.84" width="0.1524" layer="91"/>
 <junction x="73.66" y="116.84"/>
-<pinref part="U$3" gate="G$1" pin="VCC@14"/>
+<pinref part="U3" gate="G$1" pin="VCC@14"/>
 <wire x1="88.9" y1="114.3" x2="73.66" y2="114.3" width="0.1524" layer="91"/>
 <junction x="73.66" y="114.3"/>
-<pinref part="U$3" gate="G$1" pin="VCC@34"/>
+<pinref part="U3" gate="G$1" pin="VCC@34"/>
 <wire x1="88.9" y1="111.76" x2="73.66" y2="111.76" width="0.1524" layer="91"/>
 <junction x="73.66" y="111.76"/>
-<pinref part="U$3" gate="G$1" pin="AVCC@24"/>
+<pinref part="U3" gate="G$1" pin="AVCC@24"/>
 <wire x1="88.9" y1="109.22" x2="73.66" y2="109.22" width="0.1524" layer="91"/>
 <junction x="73.66" y="109.22"/>
-<pinref part="U$3" gate="G$1" pin="AVCC@44"/>
+<pinref part="U3" gate="G$1" pin="AVCC@44"/>
 <wire x1="88.9" y1="106.68" x2="73.66" y2="106.68" width="0.1524" layer="91"/>
-<pinref part="U$3" gate="G$1" pin="UCAP"/>
+<pinref part="U3" gate="G$1" pin="UCAP"/>
 <pinref part="C22" gate="G$1" pin="1"/>
 <wire x1="88.9" y1="88.9" x2="73.66" y2="88.9" width="0.1524" layer="91"/>
 <wire x1="73.66" y1="88.9" x2="68.58" y2="88.9" width="0.1524" layer="91"/>
@@ -10392,9 +10392,6 @@ Downside is forward voltage drop</text>
 <junction x="233.68" y="121.92"/>
 </segment>
 <segment>
-<wire x1="127" y1="53.34" x2="132.08" y2="53.34" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="OLED1" gate="G$1" pin="SDIN"/>
 <wire x1="325.12" y1="200.66" x2="322.58" y2="200.66" width="0.1524" layer="91"/>
 <label x="322.58" y="200.66" size="1.27" layer="95" rot="R180" xref="yes"/>
@@ -10408,8 +10405,8 @@ Downside is forward voltage drop</text>
 <pinref part="J3" gate="G$1" pin="CMD"/>
 </segment>
 <segment>
-<wire x1="124.46" y1="53.34" x2="132.08" y2="53.34" width="0.1524" layer="91"/>
-<pinref part="U$3" gate="G$1" pin="PB2(MOSI)"/>
+<pinref part="U3" gate="G$1" pin="PB2(MOSI)"/>
+<wire x1="132.08" y1="53.34" x2="124.46" y2="53.34" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="SCK" class="0">
@@ -10420,16 +10417,20 @@ Downside is forward voltage drop</text>
 <junction x="233.68" y="119.38"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="PB1(SCK)"/>
-<wire x1="132.08" y1="55.88" x2="124.46" y2="55.88" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <label x="132.08" y="55.88" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
 <wire x1="243.84" y1="215.9" x2="251.46" y2="215.9" width="0.1524" layer="91"/>
 <label x="243.84" y="215.9" size="1.27" layer="95" rot="R180" xref="yes"/>
 <pinref part="J3" gate="G$1" pin="CLK"/>
+</segment>
+<segment>
+<pinref part="U3" gate="G$1" pin="PB1(SCK)"/>
+<wire x1="132.08" y1="55.88" x2="124.46" y2="55.88" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="OLED1" gate="G$1" pin="SCLK"/>
+<wire x1="322.58" y1="203.2" x2="325.12" y2="203.2" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MISO" class="0">
@@ -10444,14 +10445,11 @@ Downside is forward voltage drop</text>
 <junction x="233.68" y="124.46"/>
 </segment>
 <segment>
-<wire x1="127" y1="50.8" x2="132.08" y2="50.8" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <label x="132.08" y="50.8" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<wire x1="124.46" y1="50.8" x2="132.08" y2="50.8" width="0.1524" layer="91"/>
-<pinref part="U$3" gate="G$1" pin="PB3(MISO)"/>
+<pinref part="U3" gate="G$1" pin="PB3(MISO)"/>
+<wire x1="132.08" y1="50.8" x2="124.46" y2="50.8" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="MP3-CS" class="0">
@@ -10464,7 +10462,7 @@ Downside is forward voltage drop</text>
 <label x="132.08" y="93.98" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="PD2(RX)"/>
+<pinref part="U3" gate="G$1" pin="PD2(RX)"/>
 <wire x1="132.08" y1="93.98" x2="124.46" y2="93.98" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -10478,7 +10476,7 @@ Downside is forward voltage drop</text>
 <label x="132.08" y="91.44" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="PD3(TX)"/>
+<pinref part="U3" gate="G$1" pin="PD3(TX)"/>
 <wire x1="132.08" y1="91.44" x2="124.46" y2="91.44" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -10498,7 +10496,7 @@ Downside is forward voltage drop</text>
 <label x="132.08" y="88.9" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="PD1(SDA)"/>
+<pinref part="U3" gate="G$1" pin="PD1(SDA)"/>
 <wire x1="132.08" y1="88.9" x2="124.46" y2="88.9" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -10512,7 +10510,7 @@ Downside is forward voltage drop</text>
 <label x="132.08" y="86.36" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="PD0(SCL)"/>
+<pinref part="U3" gate="G$1" pin="PD0(SCL)"/>
 <wire x1="132.08" y1="86.36" x2="124.46" y2="86.36" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -10525,7 +10523,7 @@ Downside is forward voltage drop</text>
 <wire x1="81.28" y1="73.66" x2="86.36" y2="73.66" width="0.1524" layer="91"/>
 <junction x="81.28" y="73.66"/>
 <wire x1="86.36" y1="73.66" x2="86.36" y2="71.12" width="0.1524" layer="91"/>
-<pinref part="U$3" gate="G$1" pin="XTAL1"/>
+<pinref part="U3" gate="G$1" pin="XTAL1"/>
 <wire x1="86.36" y1="71.12" x2="88.9" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -10538,7 +10536,7 @@ Downside is forward voltage drop</text>
 <wire x1="81.28" y1="63.5" x2="86.36" y2="63.5" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="63.5" x2="86.36" y2="66.04" width="0.1524" layer="91"/>
 <junction x="81.28" y="63.5"/>
-<pinref part="U$3" gate="G$1" pin="XTAL2"/>
+<pinref part="U3" gate="G$1" pin="XTAL2"/>
 <wire x1="86.36" y1="66.04" x2="88.9" y2="66.04" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -10658,7 +10656,7 @@ Downside is forward voltage drop</text>
 <wire x1="154.94" y1="116.84" x2="154.94" y2="119.38" width="0.1524" layer="91"/>
 <wire x1="124.46" y1="116.84" x2="154.94" y2="116.84" width="0.1524" layer="91"/>
 <junction x="154.94" y="116.84"/>
-<pinref part="U$3" gate="G$1" pin="PF7(ADC7)"/>
+<pinref part="U3" gate="G$1" pin="PF7(ADC7)"/>
 </segment>
 </net>
 <net name="N$19" class="0">
@@ -10669,7 +10667,7 @@ Downside is forward voltage drop</text>
 <wire x1="160.02" y1="114.3" x2="160.02" y2="119.38" width="0.1524" layer="91"/>
 <wire x1="124.46" y1="114.3" x2="160.02" y2="114.3" width="0.1524" layer="91"/>
 <junction x="160.02" y="114.3"/>
-<pinref part="U$3" gate="G$1" pin="PF6(ADC6)"/>
+<pinref part="U3" gate="G$1" pin="PF6(ADC6)"/>
 </segment>
 </net>
 <net name="N$27" class="0">
@@ -10680,7 +10678,7 @@ Downside is forward voltage drop</text>
 <wire x1="165.1" y1="111.76" x2="165.1" y2="119.38" width="0.1524" layer="91"/>
 <wire x1="124.46" y1="111.76" x2="165.1" y2="111.76" width="0.1524" layer="91"/>
 <junction x="165.1" y="111.76"/>
-<pinref part="U$3" gate="G$1" pin="PF5(ADC5)"/>
+<pinref part="U3" gate="G$1" pin="PF5(ADC5)"/>
 </segment>
 </net>
 <net name="PWM_LEFT" class="0">
@@ -10691,13 +10689,7 @@ Downside is forward voltage drop</text>
 <pinref part="S5" gate="G$1" pin="1"/>
 <wire x1="170.18" y1="119.38" x2="170.18" y2="109.22" width="0.1524" layer="91"/>
 <junction x="170.18" y="109.22"/>
-<pinref part="U$3" gate="G$1" pin="PF4(ADC4)"/>
-</segment>
-</net>
-<net name="N$29" class="0">
-<segment>
-<pinref part="OLED1" gate="G$1" pin="SCLK"/>
-<wire x1="322.58" y1="203.2" x2="325.12" y2="203.2" width="0.1524" layer="91"/>
+<pinref part="U3" gate="G$1" pin="PF4(ADC4)"/>
 </segment>
 </net>
 <net name="OLED-CS" class="0">
@@ -10707,9 +10699,10 @@ Downside is forward voltage drop</text>
 <label x="322.58" y="210.82" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="PD6(ADC9)"/>
-<wire x1="124.46" y1="63.5" x2="132.08" y2="63.5" width="0.1524" layer="91"/>
-<label x="132.08" y="63.5" size="1.27" layer="95" xref="yes"/>
+<pinref part="U3" gate="G$1" pin="PD4(ADC8)"/>
+<wire x1="124.46" y1="83.82" x2="132.08" y2="83.82" width="0.1524" layer="91"/>
+<label x="132.08" y="83.82" size="1.27" layer="95" xref="yes"/>
+<label x="132.08" y="83.82" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="OLED-RST" class="0">
@@ -10717,11 +10710,11 @@ Downside is forward voltage drop</text>
 <pinref part="OLED1" gate="G$1" pin="RES#"/>
 <wire x1="325.12" y1="208.28" x2="322.58" y2="208.28" width="0.1524" layer="91"/>
 <label x="322.58" y="208.28" size="1.27" layer="95" rot="R180" xref="yes"/>
-<label x="132.08" y="83.82" size="1.27" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="PD4(ADC8)"/>
-<wire x1="132.08" y1="83.82" x2="124.46" y2="83.82" width="0.1524" layer="91"/>
+<pinref part="U3" gate="G$1" pin="PD6(ADC9)"/>
+<wire x1="124.46" y1="63.5" x2="132.08" y2="63.5" width="0.1524" layer="91"/>
+<label x="132.08" y="63.5" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="SD-CS" class="0">
@@ -10734,8 +10727,8 @@ Downside is forward voltage drop</text>
 <pinref part="J3" gate="G$1" pin="CD/DAT3"/>
 </segment>
 <segment>
-<wire x1="124.46" y1="58.42" x2="132.08" y2="58.42" width="0.1524" layer="91"/>
-<pinref part="U$3" gate="G$1" pin="PB0(SS)"/>
+<pinref part="U3" gate="G$1" pin="PB0(SS)"/>
+<wire x1="132.08" y1="58.42" x2="124.46" y2="58.42" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="OLED-DC" class="0">
@@ -10745,14 +10738,15 @@ Downside is forward voltage drop</text>
 <label x="322.58" y="205.74" size="1.27" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<wire x1="124.46" y1="45.72" x2="132.08" y2="45.72" width="0.1524" layer="91"/>
-<label x="132.08" y="45.72" size="1.27" layer="95" xref="yes"/>
+<pinref part="U3" gate="G$1" pin="PD7(ADC10)"/>
+<wire x1="124.46" y1="78.74" x2="132.08" y2="78.74" width="0.1524" layer="91"/>
+<label x="132.08" y="78.74" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="PWM_R" class="0">
 <segment>
 <label x="132.08" y="71.12" size="1.27" layer="95" xref="yes"/>
-<pinref part="U$3" gate="G$1" pin="PB5(ADC12)"/>
+<pinref part="U3" gate="G$1" pin="PB5(ADC12)"/>
 <wire x1="132.08" y1="71.12" x2="124.46" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -10764,7 +10758,7 @@ Downside is forward voltage drop</text>
 <net name="PWM_L" class="0">
 <segment>
 <label x="132.08" y="68.58" size="1.27" layer="95" xref="yes"/>
-<pinref part="U$3" gate="G$1" pin="PB6(ADC13)"/>
+<pinref part="U3" gate="G$1" pin="PB6(ADC13)"/>
 <wire x1="132.08" y1="68.58" x2="124.46" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 <segment>
@@ -10815,7 +10809,7 @@ Downside is forward voltage drop</text>
 <label x="30.48" y="236.22" size="1.016" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="U$3" gate="G$1" pin="VBUS"/>
+<pinref part="U3" gate="G$1" pin="VBUS"/>
 <wire x1="81.28" y1="93.98" x2="88.9" y2="93.98" width="0.1524" layer="91"/>
 </segment>
 </net>
@@ -10834,7 +10828,7 @@ Downside is forward voltage drop</text>
 <wire x1="124.46" y1="106.68" x2="175.26" y2="106.68" width="0.1524" layer="91"/>
 <junction x="175.26" y="106.68"/>
 <pinref part="R8" gate="G$1" pin="2"/>
-<pinref part="U$3" gate="G$1" pin="PF1(ADC1)"/>
+<pinref part="U3" gate="G$1" pin="PF1(ADC1)"/>
 </segment>
 </net>
 <net name="N$13" class="0">
@@ -10894,21 +10888,21 @@ Downside is forward voltage drop</text>
 <net name="N$22" class="0">
 <segment>
 <pinref part="R23" gate="G$1" pin="2"/>
-<pinref part="U$3" gate="G$1" pin="D+"/>
+<pinref part="U3" gate="G$1" pin="D+"/>
 <wire x1="76.2" y1="83.82" x2="88.9" y2="83.82" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$23" class="0">
 <segment>
 <pinref part="R24" gate="G$1" pin="2"/>
-<pinref part="U$3" gate="G$1" pin="D-"/>
+<pinref part="U3" gate="G$1" pin="D-"/>
 <wire x1="66.04" y1="81.28" x2="88.9" y2="81.28" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="RST" class="0">
 <segment>
 <pinref part="R17" gate="G$1" pin="1"/>
-<pinref part="U$3" gate="G$1" pin="!RESET"/>
+<pinref part="U3" gate="G$1" pin="!RESET"/>
 <wire x1="86.36" y1="116.84" x2="88.9" y2="116.84" width="0.1524" layer="91"/>
 <pinref part="S1" gate="G$1" pin="2"/>
 <wire x1="86.36" y1="127" x2="86.36" y2="116.84" width="0.1524" layer="91"/>
@@ -10918,7 +10912,7 @@ Downside is forward voltage drop</text>
 </net>
 <net name="N$1" class="0">
 <segment>
-<pinref part="U$3" gate="G$1" pin="PF0(ADC0)"/>
+<pinref part="U3" gate="G$1" pin="PF0(ADC0)"/>
 <wire x1="124.46" y1="104.14" x2="182.88" y2="104.14" width="0.1524" layer="91"/>
 <pinref part="R18" gate="G$1" pin="2"/>
 </segment>
@@ -10928,6 +10922,9 @@ Downside is forward voltage drop</text>
 </sheets>
 <errors>
 <approved hash="202,1,137.16,193.04,U2,BP,,,,"/>
+<approved hash="104,1,43.18,228.6,U5,VIN,VUSB,,,"/>
+<approved hash="104,1,63.5,223.52,U5,VSS,GND,,,"/>
+<approved hash="113,1,193.571,130.071,FRAME2,,,,,"/>
 </errors>
 </schematic>
 </drawing>
