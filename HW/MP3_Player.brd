@@ -32,7 +32,7 @@
 <layer number="22" name="bPlace" color="7" fill="1" visible="no" active="yes"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
@@ -54,11 +54,11 @@
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
-<layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
@@ -105,7 +105,7 @@
 <layer number="129" name="Mask" color="7" fill="1" visible="no" active="yes"/>
 <layer number="131" name="tAdjust" color="7" fill="1" visible="no" active="yes"/>
 <layer number="132" name="bAdjust" color="7" fill="1" visible="no" active="yes"/>
-<layer number="144" name="DrillLegend" color="7" fill="1" visible="no" active="yes"/>
+<layer number="144" name="DrillLegend" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="145" name="DrillLegend_01-16" color="2" fill="9" visible="no" active="yes"/>
 <layer number="146" name="DrillLegend_01-20" color="3" fill="9" visible="no" active="yes"/>
 <layer number="150" name="Notes" color="7" fill="1" visible="no" active="yes"/>
@@ -476,6 +476,7 @@ Pero 2016</text>
 <wire x1="13.008" y1="9.508" x2="11.992" y2="8.492" width="0.1016" layer="146"/>
 <wire x1="11.992" y1="8.492" x2="13.008" y2="8.492" width="0.1016" layer="146"/>
 <wire x1="13.008" y1="8.492" x2="11.992" y2="9.508" width="0.1016" layer="146"/>
+<text x="105.15" y="3.5" size="1.778" layer="21">&gt;</text>
 </plain>
 <libraries>
 <library name="SparkFun-Capacitors">
@@ -794,13 +795,13 @@ We've spent an enormous amount of time creating and checking these footprints an
 <rectangle x1="3.5814" y1="0.9652" x2="4.9276" y2="1.016" layer="41"/>
 <rectangle x1="-4.9276" y1="0.9652" x2="-3.556" y2="1.016" layer="41"/>
 </package>
-<package name="QFN-44-NOPAD">
-<wire x1="3.1" y1="-3.5" x2="3.5" y2="-3.5" width="0.2032" layer="21"/>
-<wire x1="3.5" y1="-3.1" x2="3.5" y2="-3.5" width="0.2032" layer="21"/>
-<wire x1="-3.1" y1="-3.5" x2="-3.5" y2="-3.5" width="0.2032" layer="21"/>
+<package name="QFN-44">
+<wire x1="1.65" y1="-3.5" x2="3.5" y2="-3.5" width="0.2032" layer="21"/>
+<wire x1="3.5" y1="-1.65" x2="3.5" y2="-3.5" width="0.2032" layer="21"/>
+<wire x1="-1.65" y1="-3.5" x2="-3.5" y2="-3.5" width="0.2032" layer="21"/>
 <wire x1="-3.5" y1="-3.5" x2="-3.5" y2="-3.1" width="0.2032" layer="21"/>
-<wire x1="3.5" y1="3.1" x2="3.5" y2="3.5" width="0.2032" layer="21"/>
-<wire x1="3.5" y1="3.5" x2="3.1" y2="3.5" width="0.2032" layer="21"/>
+<wire x1="3.5" y1="1.65" x2="3.5" y2="3.5" width="0.2032" layer="21"/>
+<wire x1="3.5" y1="3.5" x2="1.65" y2="3.5" width="0.2032" layer="21"/>
 <wire x1="-3" y1="3.5" x2="-3.5" y2="3" width="0.2032" layer="21"/>
 <wire x1="-3.5" y1="3.5" x2="-3.5" y2="-3.5" width="0.127" layer="51"/>
 <wire x1="-3.4" y1="-3.5" x2="3.5" y2="-3.5" width="0.127" layer="51"/>
@@ -852,6 +853,8 @@ We've spent an enormous amount of time creating and checking these footprints an
 <smd name="44" x="-2.5" y="3.4" dx="0.8" dy="0.3" layer="1" rot="R270"/>
 <text x="-2.45" y="4.8" size="1.27" layer="25">&gt;NAME</text>
 <text x="-2.5" y="-6.15" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-2.5" y1="-2.5" x2="2.5" y2="2.5" layer="1"/>
+<rectangle x1="-0.5" y1="-0.5" x2="0.5" y2="0.5" layer="29"/>
 </package>
 </packages>
 </library>
@@ -2907,7 +2910,7 @@ Please make sure your boards conform to these design rules.</description>
 </element>
 <element name="U$1" library="frames" package="A4L-LOC" value="" x="-29" y="-89"/>
 <element name="DRILEGEND" library="drilegend" package="DRILEGEND" value="" x="132.98400625" y="-24.826003125"/>
-<element name="U3" library="SparkFun-DigitalIC" package="QFN-44-NOPAD" value="ATMEGA32U4QFN2" x="177" y="6" rot="R180"/>
+<element name="U3" library="SparkFun-DigitalIC" package="QFN-44" value="ATMEGA32U4QFN" x="177" y="6" rot="R180"/>
 </elements>
 <signals>
 <signal name="GND">

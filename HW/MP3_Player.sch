@@ -9445,7 +9445,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="R19" library="rcl" deviceset="R-EU_" device="R0603" value="68"/>
 <part name="C27" library="rcl" deviceset="C-EU" device="C0603" value="0.1µF"/>
 <part name="GND22" library="SparkFun" deviceset="GND" device=""/>
-<part name="U3" library="SparkFun-DigitalIC" deviceset="ATMEGA32U4" device="QFN2"/>
+<part name="U3" library="SparkFun-DigitalIC" deviceset="ATMEGA32U4" device="QFN" value="ATMEGA32U4QFN"/>
 <part name="GND34" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
