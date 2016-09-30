@@ -9259,7 +9259,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <attributes>
 </attributes>
 <variantdefs>
-<variantdef name="No MP3"/>
+<variantdef name="No MP3" current="yes"/>
 </variantdefs>
 <classes>
 <class number="0" name="default" width="0" drill="0">
