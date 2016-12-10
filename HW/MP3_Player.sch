@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="7.3.0">
+<eagle version="7.7.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -9476,6 +9476,11 @@ Downside is forward voltage drop</text>
 <text x="374.904" y="4.826" size="2.1844" layer="91">v2.0</text>
 <text x="317.5" y="172.72" size="2.54" layer="97">OLED Interface</text>
 <text x="259.08" y="40.64" size="2.54" layer="97" ratio="15">(Optional)</text>
+<text x="25.4" y="142.24" size="1.778" layer="91">TO DO:
+_______________
+
+ * Change buttons to the pins with interrupt functions
+ * No need forexternal pull up resistors, internal can be activated with PORTxn register</text>
 </plain>
 <instances>
 <instance part="U1" gate="U1" x="129.54" y="231.14"/>
