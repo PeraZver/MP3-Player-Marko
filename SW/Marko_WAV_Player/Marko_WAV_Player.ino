@@ -16,8 +16,10 @@
 
 TMRpcm tmrpcm;          // create an object for use in this sketch
 uint8_t buttons = 0;
-boolean play_flag = LOW;
-char *song[5];
+boolean play_flag, start_playing = LOW;
+char *song[5];        // Playlist stored as an array of strings i.e. pointers to the char
+uint8_t songCtr = 0;  // Number of songs 
+uint8_t currentSong = 0;  //Current song in the playlist, start from 0.
 
 void setup(){
   /* Set system clock */
@@ -53,7 +55,7 @@ void setup(){
    Serial.println(*(song+i));
 
   Serial.print("First song is: ");
-  Serial.println(song[0]);
+  Serial.println(song[currentSong]);
 
   /* Set PWM output */  
   tmrpcm.speakerPin = 9; // PWM player output mono
@@ -73,12 +75,20 @@ void loop(){
  switch (buttons){
 
   case (1 << PINF7):         // "Play/Pause" button on PF7
-       if (!play_flag){      // if it's not playing, make it play
-          tmrpcm.play(song[0]);
+       if (!play_flag & !start_playing){      // if it's not playing, make it play
+          tmrpcm.play(song[currentSong]);
+          Serial.print("Started playing: ");
+          Serial.println(song[currentSong]);
+          play_flag = start_playing = HIGH;
+       }
+       else if (!play_flag & start_playing){
+          tmrpcm.pause();
+          Serial.println("unpause");
           play_flag = HIGH;
        }
        else {
           tmrpcm.pause();
+          Serial.println("pause");
           play_flag = LOW;
        }
 
@@ -96,14 +106,26 @@ void loop(){
        toggle_LED();
        break;
 
-  case (1 << PINF6):    // Play next file
+  case (1 << PINF5):    // Play next file
       toggle_LED();
-     /* entry =  root.openNextFile();
-      song = entry.name();
-      Serial.print("Now playing: ");
-      Serial.println(song);
-      tmrpcm.play(song);*/
+      if (currentSong < songCtr){
+          currentSong++;
+          tmrpcm.play(song[currentSong]);
+          Serial.print("Now playing: ");
+          Serial.println(song[currentSong]);
+      }
       break;
+
+  case (1 << PINF6):    // Play previous file
+      toggle_LED();
+      if (currentSong > 0){
+          currentSong--;
+          tmrpcm.play(song[currentSong]);          
+          Serial.print("Now playing: ");
+          Serial.println(song[currentSong]);
+      }
+      break;     
+
       
   default:
       break;
@@ -124,7 +146,6 @@ void find_music(){
 /* This function searches the root folder of SD card 
  *  and gets the filenames of WAV files.
  */
-  char i = 0;
   File root;        // Grab the file system object
   /* Get the filenames */
   root = SD.open("/");  
@@ -139,10 +160,10 @@ void find_music(){
        //Serial.println("/");
        //printDirectory(entry, numTabs+1);
      } else {
-        song[i] = strdup(entry.name());
-        Serial.println(song[i]);
-        Serial.println(song[2]);
-        i++;
+        song[songCtr] = strdup(entry.name());
+        //Serial.println(song[i]);
+        //Serial.println(song[2]);
+        songCtr++;
        // files have sizes, directories do not
        Serial.print("\t\t");
        Serial.println(entry.size(), DEC);
