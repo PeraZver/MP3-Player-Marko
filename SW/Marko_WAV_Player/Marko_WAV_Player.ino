@@ -11,12 +11,13 @@
 #define SD_ChipSelectPin 17   //using digital pin 4 on arduino nano 328, can use other pins
 #include <TMRpcm.h>           //  also need to include this library...
 #include <SPI.h>
+#include <string.h>
 #define F_CPU 8000000UL // 8 MHz clock 
 
 TMRpcm tmrpcm;          // create an object for use in this sketch
 uint8_t buttons = 0;
 boolean play_flag = LOW;
-char * song= "";
+char *song[5];
 
 void setup(){
   /* Set system clock */
@@ -29,7 +30,7 @@ void setup(){
   MCUCR |= (1<<JTD);   // 
   MCUCR |= (1<<JTD);   // Have to do it twice (datasheet page 328.)
 
-  delay(2000);
+  delay(5000);
   
   /* Set buttons */
   DDRF = 0x01; // Set all pins in PORTF as input except the last one where is LED
@@ -44,11 +45,15 @@ void setup(){
   }
 
   /* Make the playlist */
+  char i = 0;  // helpful counter
   find_music();
- // song = entry.name();          // get the 1st song name
-  song = "FRANK002.WAV";
+  // song = entry.name();          // get the 1st song name
+  Serial.println("Playlist: ");
+  for (i=0; i<5; i++)
+   Serial.println(*(song+i));
+
   Serial.print("First song is: ");
-  Serial.println(song);
+  Serial.println(song[0]);
 
   /* Set PWM output */  
   tmrpcm.speakerPin = 9; // PWM player output mono
@@ -69,7 +74,7 @@ void loop(){
 
   case (1 << PINF7):         // "Play/Pause" button on PF7
        if (!play_flag){      // if it's not playing, make it play
-          tmrpcm.play(song);
+          tmrpcm.play(song[0]);
           play_flag = HIGH;
        }
        else {
@@ -119,7 +124,7 @@ void find_music(){
 /* This function searches the root folder of SD card 
  *  and gets the filenames of WAV files.
  */
-
+  char i = 0;
   File root;        // Grab the file system object
   /* Get the filenames */
   root = SD.open("/");  
@@ -130,16 +135,20 @@ void find_music(){
        // no more files
        break;
      }
-     Serial.print(entry.name());
      if (entry.isDirectory()) {
-       Serial.println("/");
+       //Serial.println("/");
        //printDirectory(entry, numTabs+1);
      } else {
+        song[i] = strdup(entry.name());
+        Serial.println(song[i]);
+        Serial.println(song[2]);
+        i++;
        // files have sizes, directories do not
        Serial.print("\t\t");
        Serial.println(entry.size(), DEC);
      }
      entry.close();
+     
    }
 }
 
