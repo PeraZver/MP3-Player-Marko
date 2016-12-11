@@ -14,12 +14,12 @@
 #include <string.h>
 #define F_CPU 8000000UL // 8 MHz clock 
 
-TMRpcm tmrpcm;          // create an object for use in this sketch
+TMRpcm tmrpcm;            // create an object for use in this sketch
 uint8_t buttons = 0;
 boolean play_flag, start_playing = LOW;
-char *song[5];        // Playlist stored as an array of strings i.e. pointers to the char
-uint8_t songCtr = 0;  // Number of songs 
-uint8_t currentSong = 0;  //Current song in the playlist, start from 0.
+char *song[10]={};        // Playlist stored as an array of strings i.e. pointers to the char00000
+uint8_t songCtr = 0;      // Number of songs 
+uint8_t currentSong = 0;  // Current song in the playlist, start from 0.
 
 void setup(){
   /* Set system clock */
@@ -70,8 +70,7 @@ void setup(){
 void loop(){  
 
  buttons = PINF;
- Serial.println(buttons, BIN);
-
+ /* Check the buttons first */
  switch (buttons){
 
   case (1 << PINF7):         // "Play/Pause" button on PF7
@@ -91,9 +90,7 @@ void loop(){
           Serial.println("pause");
           play_flag = LOW;
        }
-
-       toggle_LED();
-       
+       toggle_LED();       
        break;
        
   case (1 << PINF4):   // Volume up button on PF4
@@ -131,7 +128,24 @@ void loop(){
       break;
   }
   
-delay(500);
+ delay(500);
+
+  /* Keep on with the playlist */
+  if (start_playing & !tmrpcm.isPlaying()){  //If the playlist is started, and one song has finished, continue to the next song
+   if (currentSong < songCtr){               // if the list has not come to an end
+          currentSong++;
+          tmrpcm.play(song[currentSong]);
+          Serial.print("Now playing: ");
+          Serial.println(song[currentSong]);
+      }
+    else {
+      currentSong = 0;                 // if the list has come to an end, reset the counter
+      start_playing = LOW;             // and go stop playing mode
+    }
+    
+  }
+
+ 
 }
 
 void toggle_LED(void){
