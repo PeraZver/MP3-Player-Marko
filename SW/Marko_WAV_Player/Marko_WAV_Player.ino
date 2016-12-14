@@ -6,20 +6,58 @@
  * 
  */
 
-
-#include <SD.h>
-#define SD_ChipSelectPin 17   //using digital pin 4 on arduino nano 328, can use other pins
-#include <TMRpcm.h>           //  also need to include this library...
 #include <SPI.h>
+#include <Wire.h>
+#include <SD.h>
+#include <TMRpcm.h>           
 #include <string.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
 #define F_CPU 8000000UL // 8 MHz clock 
 
-TMRpcm tmrpcm;            // create an object for use in this sketch
+//SPI digital pins (from Leonardo board)
+#define OLED_DC    6
+#define OLED_CS    4
+#define OLED_RESET  12
+#define SD_ChipSelectPin 17  //using digital pin 4 on arduino nano 328, can use other pins 
+
+// Classes for OLED display and SD card
+Adafruit_SSD1306 display(OLED_DC, OLED_RESET, OLED_CS);
+TMRpcm tmrpcm;   // create an object for use in this sketch
+
 uint8_t buttons = 0;
 boolean play_flag, start_playing = LOW;
 char *song[10]={};        // Playlist stored as an array of strings i.e. pointers to the char00000
 uint8_t songCtr = 0;      // Number of songs 
 uint8_t currentSong = 0;  // Current song in the playlist, start from 0.
+
+// defs for OLED
+#define NUMFLAKES 10
+#define XPOS 0
+#define YPOS 1
+#define DELTAY 2
+#define LOGO16_GLCD_HEIGHT 16 
+#define LOGO16_GLCD_WIDTH  16 
+static const unsigned char PROGMEM logo16_glcd_bmp[] =
+{ B00000000, B11000000,
+  B00000001, B11000000,
+  B00000001, B11000000,
+  B00000011, B11100000,
+  B11110011, B11100000,
+  B11111110, B11111000,
+  B01111110, B11111111,
+  B00110011, B10011111,
+  B00011111, B11111100,
+  B00001101, B01110000,
+  B00011011, B10100000,
+  B00111111, B11100000,
+  B00111111, B11110000,
+  B01111100, B11110000,
+  B01110000, B01110000,
+  B00000000, B00110000 };
+
+
 
 void setup(){
   /* Set system clock */
@@ -32,8 +70,6 @@ void setup(){
   MCUCR |= (1<<JTD);   // 
   MCUCR |= (1<<JTD);   // Have to do it twice (datasheet page 328.)
 
-  delay(5000);
-  
   /* Set buttons */
   DDRF = 0x01; // Set all pins in PORTF as input except the last one where is LED
 
@@ -45,6 +81,13 @@ void setup(){
     Serial.println("SD kartica nevalja. Glupane. ");
     return;   // don't do anything more if not
   }
+
+  // Generate the OLED supply from the 3.3v line internally
+   display.begin(SSD1306_SWITCHCAPVCC);  // Show image buffer on the display hardware.
+  display.display();
+  delay(2000);
+  display.clearDisplay();    
+
 
   /* Make the playlist */
   char i = 0;  // helpful counter
@@ -77,7 +120,8 @@ void loop(){
        if (!play_flag & !start_playing){      // if it's not playing, make it play
           tmrpcm.play(song[currentSong]);
           Serial.print("Started playing: ");
-          Serial.println(song[currentSong]);
+          Serial.println(song[currentSong]);  
+          testscrolltext(song[currentSong]); // Scroll some text.
           play_flag = start_playing = HIGH;
        }
        else if (!play_flag & start_playing){
@@ -108,6 +152,7 @@ void loop(){
       if (currentSong < songCtr){
           currentSong++;
           tmrpcm.play(song[currentSong]);
+          testscrolltext(song[currentSong]); // Scroll some text.
           Serial.print("Now playing: ");
           Serial.println(song[currentSong]);
       }
@@ -117,7 +162,8 @@ void loop(){
       toggle_LED();
       if (currentSong > 0){
           currentSong--;
-          tmrpcm.play(song[currentSong]);          
+          tmrpcm.play(song[currentSong]);     
+          testscrolltext(song[currentSong]); // Scroll some text.     
           Serial.print("Now playing: ");
           Serial.println(song[currentSong]);
       }
@@ -135,6 +181,7 @@ void loop(){
    if (currentSong < songCtr){               // if the list has not come to an end
           currentSong++;
           tmrpcm.play(song[currentSong]);
+          testscrolltext(song[currentSong]); // Scroll some text.
           Serial.print("Now playing: ");
           Serial.println(song[currentSong]);
       }
@@ -187,3 +234,14 @@ void find_music(){
    }
 }
 
+
+void testscrolltext(char* text) {
+  display.clearDisplay(); 
+  display.setTextSize(1);
+  display.setTextColor(WHITE);
+  display.setCursor(10,10);
+  display.clearDisplay();
+  display.println(text);
+  display.display();
+  display.startscrollright(0x00, 0x0F);
+}
