@@ -1,6 +1,6 @@
 /*****************************
  * 
- * Marko WAV Player
+ * Marko WAV Player with an OLED display
  * 
  * Pero, Dec. 2016 
  * 
@@ -39,25 +39,6 @@ uint8_t currentSong = 0;  // Current song in the playlist, start from 0.
 #define DELTAY 2
 #define LOGO16_GLCD_HEIGHT 16 
 #define LOGO16_GLCD_WIDTH  16 
-static const unsigned char PROGMEM logo16_glcd_bmp[] =
-{ B00000000, B11000000,
-  B00000001, B11000000,
-  B00000001, B11000000,
-  B00000011, B11100000,
-  B11110011, B11100000,
-  B11111110, B11111000,
-  B01111110, B11111111,
-  B00110011, B10011111,
-  B00011111, B11111100,
-  B00001101, B01110000,
-  B00011011, B10100000,
-  B00111111, B11100000,
-  B00111111, B11110000,
-  B01111100, B11110000,
-  B01110000, B01110000,
-  B00000000, B00110000 };
-
-
 
 void setup(){
   /* Set system clock */
@@ -78,32 +59,45 @@ void setup(){
 
   /* Initialize SD Card*/ 
   if (!SD.begin(SD_ChipSelectPin)) {  // see if the card is present and can be initialized:
-    Serial.println("SD kartica nevalja. Glupane. ");
+     Serial.println("SD kartica nevalja. Glupane. ");
     return;   // don't do anything more if not
   }
 
   // Generate the OLED supply from the 3.3v line internally
-   display.begin(SSD1306_SWITCHCAPVCC);  // Show image buffer on the display hardware.
-  display.display();
-  delay(2000);
-  display.clearDisplay();    
+  // display.begin(SSD1306_SWITCHCAPVCC);  // Show image buffer on the display hardware.
+  //display.display();
+  /*delay(2000);
+  display.clearDisplay();    */
 
 
   /* Make the playlist */
-  char i = 0;  // helpful counter
+  uint8_t i = 0;  // helpful counter
   find_music();
   // song = entry.name();          // get the 1st song name
-  Serial.println("Playlist: ");
+  /*Serial.println("Playlist: ");
   for (i=0; i<5; i++)
    Serial.println(*(song+i));
 
   Serial.print("First song is: ");
-  Serial.println(song[currentSong]);
+  Serial.println(song[currentSong]);*/
 
   /* Set PWM output */  
   tmrpcm.speakerPin = 9; // PWM player output mono
   pinMode(10,OUTPUT);    // and stereo
-  
+
+  delay(3000);
+  Serial.print("Number of songs: ");
+  Serial.println(NumberOfSongs());
+  /*char *pjesma = (char *)malloc(20);
+  for (i = 1; i <= 5; i++){
+      pjesma = ReadLine(i);
+      Serial.print("Pjesma br.");
+      Serial.print(i);
+      Serial.print(" je: ");
+      Serial.print(pjesma);
+  }    
+  free(pjesma);*/
+  //ReadLine(2);
 }
 
 
@@ -114,67 +108,67 @@ void loop(){
 
  buttons = PINF;
  /* Check the buttons first */
- switch (buttons){
-
-  case (1 << PINF7):         // "Play/Pause" button on PF7
-       if (!play_flag & !start_playing){      // if it's not playing, make it play
-          tmrpcm.play(song[currentSong]);
-          Serial.print("Started playing: ");
-          Serial.println(song[currentSong]);  
-          testscrolltext(song[currentSong]); // Scroll some text.
-          play_flag = start_playing = HIGH;
-       }
-       else if (!play_flag & start_playing){
-          tmrpcm.pause();
-          Serial.println("unpause");
-          play_flag = HIGH;
-       }
-       else {
-          tmrpcm.pause();
-          Serial.println("pause");
-          play_flag = LOW;
-       }
-       toggle_LED();       
-       break;
-       
-  case (1 << PINF4):   // Volume up button on PF4
-       tmrpcm.volume(1); 
-       toggle_LED();
-       break;
-       
-  case (1 << PINF1):    // Volume down button on PF1
-       tmrpcm.volume(0); 
-       toggle_LED();
-       break;
-
-  case (1 << PINF5):    // Play next file
-      toggle_LED();
-      if (currentSong < songCtr){
-          currentSong++;
-          tmrpcm.play(song[currentSong]);
-          testscrolltext(song[currentSong]); // Scroll some text.
-          Serial.print("Now playing: ");
-          Serial.println(song[currentSong]);
-      }
-      break;
-
-  case (1 << PINF6):    // Play previous file
-      toggle_LED();
-      if (currentSong > 0){
-          currentSong--;
-          tmrpcm.play(song[currentSong]);     
-          testscrolltext(song[currentSong]); // Scroll some text.     
-          Serial.print("Now playing: ");
-          Serial.println(song[currentSong]);
-      }
-      break;     
-
-      
-  default:
-      break;
-  }
-  
- delay(500);
+// switch (buttons){
+//
+//  case (1 << PINF7):         // "Play/Pause" button on PF7
+//       if (!play_flag & !start_playing){      // if it's not playing, make it play
+//          tmrpcm.play(song[currentSong]);
+//          /*Serial.print("Started playing: ");
+//          Serial.println(song[currentSong]);  */
+//          testscrolltext(song[currentSong]); // Scroll some text.
+//          play_flag = start_playing = HIGH;
+//       }
+//       else if (!play_flag & start_playing){
+//          tmrpcm.pause();
+//         // Serial.println("unpause");
+//          play_flag = HIGH;
+//       }
+//       else {
+//          tmrpcm.pause();
+//        //  Serial.println("pause");
+//          play_flag = LOW;
+//       }
+//       toggle_LED();       
+//       break;
+//       
+//  case (1 << PINF4):   // Volume up button on PF4
+//       tmrpcm.volume(1); 
+//       toggle_LED();
+//       break;
+//       
+//  case (1 << PINF1):    // Volume down button on PF1
+//       tmrpcm.volume(0); 
+//       toggle_LED();
+//       break;
+//
+//  case (1 << PINF5):    // Play next file
+//      toggle_LED();
+//      if (currentSong < songCtr){
+//          currentSong++;
+//          tmrpcm.play(song[currentSong]);
+//          testscrolltext(song[currentSong]); // Scroll some text.
+//          /*Serial.print("Now playing: ");
+//          Serial.println(song[currentSong]);*/
+//      }
+//      break;
+//
+//  case (1 << PINF6):    // Play previous file
+//      toggle_LED();
+//      if (currentSong > 0){
+//          currentSong--;
+//          tmrpcm.play(song[currentSong]);     
+//          testscrolltext(song[currentSong]); // Scroll some text.     
+//          /*Serial.print("Now playing: ");
+//          Serial.println(song[currentSong]);*/
+//      }
+//      break;     
+//
+//      
+//  default:
+//      break;
+//  }
+//  
+// delay(500);
 
   /* Keep on with the playlist */
   if (start_playing & !tmrpcm.isPlaying()){  //If the playlist is started, and one song has finished, continue to the next song
@@ -182,8 +176,8 @@ void loop(){
           currentSong++;
           tmrpcm.play(song[currentSong]);
           testscrolltext(song[currentSong]); // Scroll some text.
-          Serial.print("Now playing: ");
-          Serial.println(song[currentSong]);
+          /*Serial.print("Now playing: ");
+          Serial.println(song[currentSong]);*/
       }
     else {
       currentSong = 0;                 // if the list has come to an end, reset the counter
@@ -234,7 +228,6 @@ void find_music(){
    }
 }
 
-
 void testscrolltext(char* text) {
   display.clearDisplay(); 
   display.setTextSize(1);
@@ -245,3 +238,50 @@ void testscrolltext(char* text) {
   display.display();
   display.startscrollright(0x00, 0x0F);
 }
+
+uint8_t NumberOfSongs(){
+  /* Function that finds the number of lines (songs) in the text file*/
+    File playlist;
+    playlist = SD.open("playlist.txt");
+    
+    uint8_t lineCounter = 0;
+    char Ch;
+   
+    while (playlist.available()) {
+
+        Ch = playlist.read();   // read char by char in file        
+        if ((Ch == '\n'))        // when we reach the end of the line
+            lineCounter++;               // count the line        
+    }
+    playlist.close();
+    return lineCounter;    // Count the last row
+}
+
+void ReadLine(uint8_t lineNumber){
+
+/* Function reads a line specified by the lineNumber in txt file */
+
+    File playlist;
+    playlist = SD.open("playlist.txt");
+
+    char line[20];
+    uint8_t lineCounter, i = 0;
+   
+    while (playlist.available()) {
+
+        line[i] = playlist.read();   // read char by char in file
+        i++;
+        
+        if (line[i-1] == '\n'){        // when we reach the end of the line or file...
+            lineCounter++;               // count the line
+            line[i] = '\0';              // add string terminator
+            i = 0;                       // reset char counter
+            Serial.println(line);
+        }
+    }
+    
+    playlist.close();
+   // return line;
+    
+}
+
