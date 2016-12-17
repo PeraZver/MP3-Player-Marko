@@ -16,19 +16,19 @@
 
 #define F_CPU 8000000UL // 8 MHz clock 
 
-//SPI digital pins (from Leonardo board)
+//SPI digital pins (taken from Leonardo board)
 #define OLED_DC    6
 #define OLED_CS    4
 #define OLED_RESET  12
 #define SD_ChipSelectPin 17  //using digital pin 4 on arduino nano 328, can use other pins 
 
 // Classes for OLED display and SD card
-Adafruit_SSD1306 display(OLED_DC, OLED_RESET, OLED_CS);
+//Adafruit_SSD1306 display(OLED_DC, OLED_RESET, OLED_CS);
 TMRpcm tmrpcm;   // create an object for use in this sketch
 
 uint8_t buttons = 0;
-boolean play_flag, start_playing = LOW;
-char *song[10]={};        // Playlist stored as an array of strings i.e. pointers to the char00000
+boolean play_flag = LOW, start_playing = LOW;
+char *song[10];        // Playlist stored as an array of strings i.e. pointers to the char
 uint8_t songCtr = 0;      // Number of songs 
 uint8_t currentSong = 0;  // Current song in the playlist, start from 0.
 
@@ -69,26 +69,25 @@ void setup(){
   /*delay(2000);
   display.clearDisplay();    */
 
-
+  
+  delay(4000);
   /* Make the playlist */
   uint8_t i = 0;  // helpful counter
-  //find_music();
-  // song = entry.name();          // get the 1st song name
-  /*Serial.println("Playlist: ");
+  find_music();
+  Serial.println("Playlist: ");
   for (i=0; i<5; i++)
-   Serial.println(*(song+i));
+     Serial.println(*(song+i));
 
   Serial.print("First song is: ");
-  Serial.println(song[currentSong]);*/
+  Serial.println(song[currentSong]);
 
   /* Set PWM output */  
   tmrpcm.speakerPin = 9; // PWM player output mono
   pinMode(10,OUTPUT);    // and stereo
 
-  delay(3000);
   Serial.print("Number of songs: ");
   Serial.println(NumberOfSongs());
-  char pjesma[20]={'0'};
+  char pjesma[50]={'0'};
   
   for (i = 1; i <= 5; i++){
       ReadLine(pjesma, i);      // in array pjesma store the i-th line in the textfile.
@@ -97,8 +96,15 @@ void setup(){
       Serial.print(" je: ");
       Serial.print(pjesma);
   }    
-  free(pjesma);
-  //ReadLine(2);
+  //free(pjesma);
+  
+  Serial.print(pjesma);
+  if (SD.exists(pjesma)) {
+    Serial.println(" exists.");
+  }
+  else {
+    Serial.println("doesn't exist.");
+  }
 }
 
 
@@ -172,20 +178,20 @@ void loop(){
 // delay(500);
 
   /* Keep on with the playlist */
-  if (start_playing & !tmrpcm.isPlaying()){  //If the playlist is started, and one song has finished, continue to the next song
-   if (currentSong < songCtr){               // if the list has not come to an end
-          currentSong++;
-          tmrpcm.play(song[currentSong]);
-          testscrolltext(song[currentSong]); // Scroll some text.
-          /*Serial.print("Now playing: ");
-          Serial.println(song[currentSong]);*/
-      }
-    else {
-      currentSong = 0;                 // if the list has come to an end, reset the counter
-      start_playing = LOW;             // and go stop playing mode
-    }
-    
-  }
+//  if (start_playing & !tmrpcm.isPlaying()){  //If the playlist is started, and one song has finished, continue to the next song
+//   if (currentSong < songCtr){               // if the list has not come to an end
+//          currentSong++;
+//          tmrpcm.play(song[currentSong]);
+////         testscrolltext(song[currentSong]); // Scroll some text.
+//          /*Serial.print("Now playing: ");
+//          Serial.println(song[currentSong]);*/
+//      }
+//    else {
+//      currentSong = 0;                 // if the list has come to an end, reset the counter
+//      start_playing = LOW;             // and go stop playing mode
+//    }
+//    
+//  }
 
  
 }
@@ -212,33 +218,26 @@ void find_music(){
        // no more files
        break;
      }
-     if (entry.isDirectory()) {
-       //Serial.println("/");
-       //printDirectory(entry, numTabs+1);
-     } else {
-        song[songCtr] = strdup(entry.name());
-        //Serial.println(song[i]);
-        //Serial.println(song[2]);
-        songCtr++;
-       // files have sizes, directories do not
-       Serial.print("\t\t");
-       Serial.println(entry.size(), DEC);
+     if (entry.isDirectory()== 0) {         // If the entry is not a directory
+        song[songCtr] = strdup(entry.name());  // add it to the the string array
+        songCtr++;                            
      }
      entry.close();
+     root.close();
      
    }
 }
 
-void testscrolltext(char* text) {
-  display.clearDisplay(); 
-  display.setTextSize(1);
-  display.setTextColor(WHITE);
-  display.setCursor(10,10);
-  display.clearDisplay();
-  display.println(text);
-  display.display();
-  display.startscrollright(0x00, 0x0F);
-}
+//void testscrolltext(char* text) {
+//  display.clearDisplay(); 
+//  display.setTextSize(1);
+//  display.setTextColor(WHITE);
+//  display.setCursor(10,10);
+//  display.clearDisplay();
+//  display.println(text);
+//  display.display();
+//  display.startscrollright(0x00, 0x0F);
+//}
 
 uint8_t NumberOfSongs(){
   /* Function that finds the number of lines (songs) in the text file*/
@@ -260,7 +259,8 @@ uint8_t NumberOfSongs(){
 
 char ReadLine(char *line, uint8_t lineNumber){
 
-/* Function reads a line specified by the lineNumber in txt file */
+/* Function reads a line specified by the lineNumber in txt file, 
+ * and stores it in the char array. */
 
     File playlist;
     playlist = SD.open("playlist.txt");
@@ -277,13 +277,8 @@ char ReadLine(char *line, uint8_t lineNumber){
             lineCounter++;               // count the line
             *(line + i) = '\0';              // add string terminator
             i = 0;                       // reset char counter
-            //Serial.println(line);
-            //Serial.print("Line counter: ");
-            //Serial.print(lineCounter);
         }
     }
-    
-    playlist.close();
-    
+    playlist.close();   
 }
 
