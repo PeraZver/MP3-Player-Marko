@@ -28,7 +28,7 @@ TMRpcm tmrpcm;   // create an object for use in this sketch
 
 uint8_t buttons = 0;
 boolean play_flag = LOW, start_playing = LOW;
-char *song[10];        // Playlist stored as an array of strings i.e. pointers to the char
+char *song[10]={};        // Playlist stored as an array of strings i.e. pointers to the char
 uint8_t songCtr = 0;      // Number of songs 
 uint8_t currentSong = 0;  // Current song in the playlist, start from 0.
 
@@ -68,9 +68,9 @@ void setup(){
   //display.display();
   /*delay(2000);
   display.clearDisplay();    */
-
   
   delay(4000);
+  
   /* Make the playlist */
   uint8_t i = 0;  // helpful counter
   find_music();
@@ -218,14 +218,14 @@ void find_music(){
        // no more files
        break;
      }
+
      if (entry.isDirectory()== 0) {         // If the entry is not a directory
-        song[songCtr] = strdup(entry.name());  // add it to the the string array
-        songCtr++;                            
+         song[songCtr] = strdup(entry.name());  // add it to the the string array
+         songCtr++;                            
      }
-     entry.close();
-     root.close();
-     
+     entry.close();  
    }
+   root.close(); 
 }
 
 //void testscrolltext(char* text) {
