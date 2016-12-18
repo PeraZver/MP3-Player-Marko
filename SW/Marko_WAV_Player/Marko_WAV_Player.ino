@@ -39,10 +39,10 @@ TMRpcm tmrpcm;
 
 uint8_t buttons = 0;
 boolean play_flag = LOW, start_playing = LOW;
-char *song[10]={};          // Playlist stored as an array of strings i.e. pointers to the char
+//char *song[10]={};          // Playlist stored as an array of strings i.e. pointers to the char
 char song_name[50]={'0'};   // Song name for OLED
 uint8_t songCtr = 0;        // Number of songs 
-uint8_t currentSong = 0;    // Current song in the playlist, start from 0.
+uint8_t i,currentSong = 0;    // Current song in the playlist, start from 0.
 
 
 void setup(){
@@ -58,102 +58,123 @@ void setup(){
   //display.begin(SSD1306_SWITCHCAPVCC);  // Show image buffer on the display hardware.
 
   Serial.begin(9600);
-  delay(5000);  
+  delay(4000);  
   /* Make the playlist */
+  NumberOfSongs();     // Counts the number of songs in wav file, stores in songCtr
+  
   uint8_t i=0;
-  find_music();            // creates list of WAV files for player
   Serial.println("Playlist: ");
-  for (i=0; i<5; i++){
-     Serial.println(*(song+i));
-    // ReadLine(song_name, i);
-    // Serial.println(song_name);
+  for (i=0; i<songCtr; i++){
+     find_music(i);
+     Serial.println(song_name);
   }
 
+  Serial.print("Total No. of songs: ");
+  Serial.println(songCtr);
   /* Set PWM output */  
   tmrpcm.speakerPin = 9; // PWM player output mono
   pinMode(10,OUTPUT);    // and stereo
 
+  //tmrpcm.play(song_name);
 }
 
 void loop(){  
 
-// buttons = PINF;
-// /* Check the buttons first */
-// switch (buttons){
-//
-//  case (1 << PINF7):         // "Play/Pause" button on PF7
-//       if (!play_flag & !start_playing){      // if it's not playing, make it play
-//          tmrpcm.play(song[currentSong]);
-//          //ReadLine(song_name, currentSong);
-//          //Serial.println(song_name);
-//          //PrintToOLED(song_name); 
-//          play_flag = start_playing = HIGH;
-//       }
-//       else if (!play_flag & start_playing){
-//          tmrpcm.pause();
-//          play_flag = HIGH;
-//       }
-//       else {
-//          tmrpcm.pause();
-//          play_flag = LOW;
-//       }
-//       toggle_LED();       
-//       break;
-//       
-//  case (1 << PINF4):   // Volume up button on PF4
-//       tmrpcm.volume(1); 
-//       toggle_LED();
-//       break;
-//       
-//  case (1 << PINF1):    // Volume down button on PF1
-//       tmrpcm.volume(0); 
-//       toggle_LED();
-//       break;
-//
-//  case (1 << PINF5):    // Play next file
-//      toggle_LED();
-//      if (currentSong < songCtr){
-//          currentSong++;
-//          tmrpcm.play(song[currentSong]);
-//          //ReadLine(song_name, currentSong);
-//          //Serial.println(song_name);
-//          //PrintToOLED(song_name); 
-//      }
-//      break;
-//
-//  case (1 << PINF6):    // Play previous file
-//      toggle_LED();
-//      if (currentSong > 0){
-//          currentSong--;
-//          tmrpcm.play(song[currentSong]);
-//          //ReadLine(song_name, currentSong);          
-//          //Serial.println(song_name);
-//          //PrintToOLED(song_name);    
-//      }
-//      break;     
-//
-//      
-//  default:
-//      break;
-//  }
-//  
-// delay(100);
-//
-//  /* Keep on with the playlist */
-//  if (start_playing & !tmrpcm.isPlaying()){  //If the playlist is started, and one song has finished, continue to the next song
-//   if (currentSong < songCtr){               // if the list has not come to an end
-//          currentSong++;
-//          tmrpcm.play(song[currentSong]);
-//          //ReadLine(song_name, currentSong);
-//          //Serial.println(song_name);
-//          //PrintToOLED(song_name); 
-//      }
-//    else {
-//      currentSong = 0;                 // if the list has come to an end, reset the counter
-//      start_playing = LOW;             // and go stop playing mode
-//    }
-//    
-//  }
+
+ buttons = PINF;
+ /* Check the buttons first */
+ switch (buttons){
+
+  case (1 << PINF7):         // "Play/Pause" button on PF7
+
+
+       
+       if (!play_flag & !start_playing){      // if it's not playing, make it play
+
+          Serial.print("Counter: ");
+          Serial.println(songCtr);
+
+          find_music(currentSong);         // find the 1st WAV file, currentSong is 0
+          Serial.println(song_name);
+          tmrpcm.play(song_name);
+          //PrintToOLED(song_name); 
+          play_flag = HIGH;
+          start_playing = HIGH;
+       }
+       else if (!play_flag & start_playing){
+          Serial.print("Counter: ");
+          Serial.println(songCtr);
+          tmrpcm.pause();
+          play_flag = HIGH;
+       }
+       else {
+          tmrpcm.pause();
+          play_flag = LOW;
+       }
+       toggle_LED();       
+       break;
+       
+  case (1 << PINF4):   // Volume up button on PF4
+       tmrpcm.volume(1); 
+       toggle_LED();
+       break;
+       
+  case (1 << PINF1):    // Volume down button on PF1
+       tmrpcm.volume(0); 
+       toggle_LED();
+       break;
+
+  case (1 << PINF5):    // Play next file
+      toggle_LED();
+      if (currentSong < songCtr){
+          tmrpcm.disable();   // Disable so we can acces the SD card
+          currentSong++;
+          Serial.print("Counter: ");
+          Serial.println(currentSong);
+          find_music(currentSong);
+          Serial.println(song_name);
+          tmrpcm.play(song_name);
+          //PrintToOLED(song_name); 
+      }
+      break;
+
+  case (1 << PINF6):    // Play previous file
+      toggle_LED();
+      if (currentSong > 0){
+          tmrpcm.disable();   // Disable so we can acces the SD card
+          currentSong--;
+          Serial.print("Counter: ");
+          Serial.println(currentSong);
+          find_music(currentSong);     
+          Serial.println(song_name);
+          tmrpcm.play(song_name);   
+          //PrintToOLED(song_name);    
+      }
+      break;     
+
+      
+  default:
+      break;
+  }
+  
+ delay(100);
+
+  /* Keep on with the playlist */
+  if (start_playing & !tmrpcm.isPlaying()){  //If the playlist is started, and one song has finished, continue to the next song
+   if (currentSong < songCtr){               // if the list has not come to an end
+          currentSong++;
+          find_music(currentSong);
+          tmrpcm.play(song_name);
+          //ReadLine(song_name, currentSong);
+          Serial.println(song_name);
+          //PrintToOLED(song_name); 
+      }
+    else {
+      currentSong = 0;                 // if the list has come to an end, reset the counter
+      start_playing = LOW;             // and go stop playing mode
+    }
+    
+  }
 
  
 }
@@ -166,26 +187,45 @@ void toggle_LED(void){
   
 }
 
-void find_music(){
+void find_music(uint8_t songNumber){
 /* This function searches the root folder of SD card 
- *  and gets the filenames of WAV files.
+ *  and gets the filename of the songNumber-th WAV file 
  */
-  SdFile root;        // Grab the file system object
+  SdFile root;            // Grab the file system object
   SdFile entry;
+  uint8_t lineCounter = 0;
   /* Get the filenames */
   root.open("/", O_READ  );  
+  
+  while(entry.openNext(&root, O_READ) && (lineCounter <= songNumber ) ) {     
+        if (!entry.isSubDir() && !entry.isHidden()) {      
+          entry.getName(song_name, 50);
+          lineCounter++;
+        }
+        entry.close();
+  }
+root.close();
+}
+
+void NumberOfSongs(){
+/* This function searches the root folder of SD card 
+ *  and counts the wav files. 
+ */
+  SdFile root;            // Grab the file system object
+  SdFile entry;
+  uint8_t lineCounter = 0;
+  /* Get the filenames */
+  root.open("/", O_READ  );  
+  
   while(entry.openNext(&root, O_READ)) {     
-     
-     // Skip directories and hidden files.
-    if (!entry.isSubDir() && !entry.isHidden()) {    
-        //entry.printName(&Serial);
-        entry.getName(song_name, 40);
-        Serial.println(song_name);
-    }
-    entry.close();
-   //root.close(); 
+        if (!entry.isSubDir() && !entry.isHidden())      
+          songCtr++;
+        entry.close();
+  }
+root.close();
 }
-}
+
+
 //void PrintToOLED(char* text) {
 //  
 //
@@ -198,32 +238,6 @@ void find_music(){
 //  display.display();
 //  //display.startscrollright(0x00, 0x0F);
 //}
-
-
-char ReadLine(char *line, uint8_t lineNumber){
-
-/* Function reads a line specified by the lineNumber in txt file, 
- * and stores it in the char array. */
-
-    File playlist;
-    playlist = sd.open("playlist.txt");
-
-    //char line[20];
-    uint8_t lineCounter = 0, i = 0;
-   
-    while (lineCounter < lineNumber) {
-
-        *(line+i) = playlist.read();   // read char by char in file
-        i++;
-        
-        if (line[i-1] == '\n'){        // when we reach the end of the line or file...
-            lineCounter++;               // count the line
-            *(line + i) = '\0';              // add string terminator
-            i = 0;                       // reset char counter
-        }
-    }
-    playlist.close();   
-}
 
 void AVRSetup(){
     /* Set system clock */
