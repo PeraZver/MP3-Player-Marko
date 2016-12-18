@@ -33,7 +33,7 @@
 // Classes for SD, TMRpcm player and OLED
 SdFat sd;
 TMRpcm tmrpcm;     
-//Adafruit_SSD1306 display(OLED_DC, OLED_RESET, OLED_CS);
+Adafruit_SSD1306 display(OLED_DC, OLED_RESET, OLED_CS);
 
 uint8_t buttons = 0;
 boolean play_flag = LOW, start_playing = LOW;
@@ -46,35 +46,34 @@ void setup(){
 
   AVRSetup();
 
-  Serial.begin(9600);
-  delay(4000);  
+//  Serial.begin(9600);
+  delay(500);  
   
   /* Initialize SD Card*/ 
   if (!sd.begin(SD_ChipSelectPin)) {    // see if the card is present and can be initialized
-    Serial.println("SD Card Error");
+//    Serial.println(F("SD Card Error"));
     return;                             // don't do anything more if not
-  }
-  
+  }  
+  delay(500);  
   // Generate the OLED supply from the 3.3v line internally
-/* display.begin(SSD1306_SWITCHCAPVCC);  // Show image buffer on the display hardware.
+  display.begin(SSD1306_SWITCHCAPVCC);  // Show image buffer on the display hardware.
   // Show image buffer on the display hardware.
   display.display();
-  delay(2000);
-  display.clearDisplay();*/
+  delay(500);
 
 
   /* Make the playlist */
   NumberOfSongs();     // Counts the number of songs in wav file, stores in songCtr
-  
-  uint8_t i=0;
-  Serial.println("Playlist: ");
+  delay(500);
+  /*uint8_t i=0;
+  Serial.println(F("Playlist: "));
   for (i=0; i<songCtr; i++){
      find_music(i);
      Serial.println(song_name);
   }
 
-  Serial.print("Total No. of songs: ");
-  Serial.println(songCtr);
+  Serial.print(F("Total No. of songs: "));
+  Serial.println(songCtr);*/
   
   /* Set PWM output */  
   tmrpcm.speakerPin = 9; // PWM player output mono
@@ -91,17 +90,14 @@ void loop(){
  switch (buttons){
 
   case (1 << PINF7):         // "Play/Pause" button on PF7
-
-
-       
+    
        if (!play_flag & !start_playing){      // if it's not playing, make it play
-
 //          Serial.print("Counter: ");
 //          Serial.println(songCtr);
-
           find_music(currentSong);         // find the 1st WAV file, currentSong is 0
-//          PrintToOLED(song_name); 
-          Serial.println(song_name);
+          PrintToOLED(song_name); 
+          delay(100);
+//          Serial.println(song_name);
           tmrpcm.play(song_name);
           play_flag = HIGH;
           start_playing = HIGH;
@@ -137,8 +133,9 @@ void loop(){
 //          Serial.print("Counter: ");
 //          Serial.println(currentSong);
           find_music(currentSong);
-//          PrintToOLED(song_name); 
-          Serial.println(song_name);
+          PrintToOLED(song_name); 
+          delay(100);
+//          Serial.println(song_name);
           tmrpcm.play(song_name);
       }
       break;
@@ -151,8 +148,9 @@ void loop(){
 //          Serial.print("Counter: ");
 //          Serial.println(currentSong);
           find_music(currentSong);   
-//          PrintToOLED(song_name);     
-          Serial.println(song_name);
+          PrintToOLED(song_name);  
+          delay(100);   
+//          Serial.println(song_name);
           tmrpcm.play(song_name);    
       }
       break;     
@@ -169,7 +167,8 @@ void loop(){
    if (currentSong < songCtr){               // if the list has not come to an end
           currentSong++;
           find_music(currentSong);
-//          PrintToOLED(song_name); 
+          PrintToOLED(song_name); 
+          delay(100);
           tmrpcm.play(song_name);
 //          Serial.println(song_name);
       }
@@ -229,18 +228,18 @@ void NumberOfSongs(){
 root.close();
 }
 
-//void PrintToOLED(char* text) {
-//  
-//
-//  display.clearDisplay(); 
-//  display.setTextSize(1);
-//  display.setTextColor(WHITE);
-//  display.setCursor(0,0);
-//  display.clearDisplay();
-//  display.println(text);
-//  display.display();
-//  //display.startscrollright(0x00, 0x0F);
-//}
+void PrintToOLED(char* text) {
+  
+
+  display.clearDisplay(); 
+  display.setTextSize(1);
+  display.setTextColor(WHITE);
+  display.setCursor(0,0);
+  display.clearDisplay();
+  display.println(text);
+  display.display();
+  //display.startscrollright(0x00, 0x0F);
+}
 
 void AVRSetup(){
     /* Set system clock */
