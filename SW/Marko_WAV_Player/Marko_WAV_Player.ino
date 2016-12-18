@@ -1,13 +1,3 @@
-#include <BlockDriver.h>
-#include <FreeStack.h>
-#include <MinimumSerial.h>
-#include <SdFatConfig.h>
-#include <SysCall.h>
-
-
-#include <SdFat.h>
-
-
 /****************************************
  * 
  * Marko WAV Player with an OLED display
@@ -18,7 +8,7 @@
 
 #include <SPI.h>
 #include <Wire.h>
-//#include <SD.h>
+#include <SdFat.h>
 #include <TMRpcm.h>           
 #include <string.h>
 #include <Adafruit_GFX.h>
@@ -32,17 +22,24 @@
 #define OLED_RESET  12
 #define SD_ChipSelectPin 17  
 
-// Classes for TMRpcm player and OLED
+// defs for OLED
+#define NUMFLAKES 10
+#define XPOS 0
+#define YPOS 1
+#define DELTAY 2
+#define LOGO16_GLCD_HEIGHT 16 
+#define LOGO16_GLCD_WIDTH  16 
+
+// Classes for SD, TMRpcm player and OLED
 SdFat sd;
 TMRpcm tmrpcm;     
-//Adafruit_SSD1306 display(OLED_DC, OLED_RESET, OLED_CS);
+Adafruit_SSD1306 display(OLED_DC, OLED_RESET, OLED_CS);
 
 uint8_t buttons = 0;
 boolean play_flag = LOW, start_playing = LOW;
-//char *song[10]={};          // Playlist stored as an array of strings i.e. pointers to the char
 char song_name[50]={'0'};   // Song name for OLED
 uint8_t songCtr = 0;        // Number of songs 
-uint8_t i,currentSong = 0;    // Current song in the playlist, start from 0.
+uint8_t currentSong = 0;    // Current song in the playlist, start from 0.
 
 
 void setup(){
@@ -55,14 +52,18 @@ void setup(){
   }
   
   // Generate the OLED supply from the 3.3v line internally
-  //display.begin(SSD1306_SWITCHCAPVCC);  // Show image buffer on the display hardware.
+  display.begin(SSD1306_SWITCHCAPVCC);  // Show image buffer on the display hardware.
+  // Show image buffer on the display hardware.
+  display.display();
+  delay(2000);
+  display.clearDisplay();
 
   Serial.begin(9600);
-  delay(4000);  
+//  delay(4000);  
   /* Make the playlist */
   NumberOfSongs();     // Counts the number of songs in wav file, stores in songCtr
   
-  uint8_t i=0;
+/*  uint8_t i=0;
   Serial.println("Playlist: ");
   for (i=0; i<songCtr; i++){
      find_music(i);
@@ -70,7 +71,8 @@ void setup(){
   }
 
   Serial.print("Total No. of songs: ");
-  Serial.println(songCtr);
+  Serial.println(songCtr);*/
+  
   /* Set PWM output */  
   tmrpcm.speakerPin = 9; // PWM player output mono
   pinMode(10,OUTPUT);    // and stereo
@@ -91,19 +93,19 @@ void loop(){
        
        if (!play_flag & !start_playing){      // if it's not playing, make it play
 
-          Serial.print("Counter: ");
-          Serial.println(songCtr);
+//          Serial.print("Counter: ");
+//          Serial.println(songCtr);
 
           find_music(currentSong);         // find the 1st WAV file, currentSong is 0
           Serial.println(song_name);
           tmrpcm.play(song_name);
-          //PrintToOLED(song_name); 
+          PrintToOLED(song_name); 
           play_flag = HIGH;
           start_playing = HIGH;
        }
        else if (!play_flag & start_playing){
-          Serial.print("Counter: ");
-          Serial.println(songCtr);
+//          Serial.print("Counter: ");
+//          Serial.println(songCtr);
           tmrpcm.pause();
           play_flag = HIGH;
        }
@@ -129,12 +131,12 @@ void loop(){
       if (currentSong < songCtr){
           tmrpcm.disable();   // Disable so we can acces the SD card
           currentSong++;
-          Serial.print("Counter: ");
-          Serial.println(currentSong);
+//          Serial.print("Counter: ");
+//          Serial.println(currentSong);
           find_music(currentSong);
           Serial.println(song_name);
           tmrpcm.play(song_name);
-          //PrintToOLED(song_name); 
+          PrintToOLED(song_name); 
       }
       break;
 
@@ -143,12 +145,12 @@ void loop(){
       if (currentSong > 0){
           tmrpcm.disable();   // Disable so we can acces the SD card
           currentSong--;
-          Serial.print("Counter: ");
-          Serial.println(currentSong);
+//          Serial.print("Counter: ");
+//          Serial.println(currentSong);
           find_music(currentSong);     
           Serial.println(song_name);
           tmrpcm.play(song_name);   
-          //PrintToOLED(song_name);    
+          PrintToOLED(song_name);    
       }
       break;     
 
@@ -165,9 +167,8 @@ void loop(){
           currentSong++;
           find_music(currentSong);
           tmrpcm.play(song_name);
-          //ReadLine(song_name, currentSong);
-          Serial.println(song_name);
-          //PrintToOLED(song_name); 
+//          Serial.println(song_name);
+          PrintToOLED(song_name); 
       }
     else {
       currentSong = 0;                 // if the list has come to an end, reset the counter
@@ -225,19 +226,18 @@ void NumberOfSongs(){
 root.close();
 }
 
+void PrintToOLED(char* text) {
+  
 
-//void PrintToOLED(char* text) {
-//  
-//
-//  display.clearDisplay(); 
-//  display.setTextSize(1);
-//  display.setTextColor(WHITE);
-//  display.setCursor(0,0);
-//  //display.clearDisplay();
-//  display.println(text);
-//  display.display();
-//  //display.startscrollright(0x00, 0x0F);
-//}
+  display.clearDisplay(); 
+  display.setTextSize(1);
+  display.setTextColor(WHITE);
+  display.setCursor(0,0);
+  display.clearDisplay();
+  display.println(text);
+  display.display();
+  //display.startscrollright(0x00, 0x0F);
+}
 
 void AVRSetup(){
     /* Set system clock */
