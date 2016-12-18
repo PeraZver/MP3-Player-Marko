@@ -74,7 +74,7 @@ void setup(){
   Serial.println(songCtr);*/
   
   /* Set PWM output */  
- // tmrpcm.speakerPin = 9; // PWM player output mono
+  tmrpcm.speakerPin = 9; // PWM player output mono
   pinMode(10,OUTPUT);    // and stereo
 
   //tmrpcm.play(song_name);
@@ -97,60 +97,60 @@ void loop(){
 //          Serial.println(songCtr);
 
           find_music(currentSong);         // find the 1st WAV file, currentSong is 0
-          Serial.println(song_name);
-//          tmrpcm.play(song_name);
           PrintToOLED(song_name); 
+//          Serial.println(song_name);
+          tmrpcm.play(song_name);
           play_flag = HIGH;
           start_playing = HIGH;
        }
        else if (!play_flag & start_playing){
 //          Serial.print("Counter: ");
 //          Serial.println(songCtr);
-//          tmrpcm.pause();
+          tmrpcm.pause();
           play_flag = HIGH;
        }
        else {
-//          tmrpcm.pause();
+          tmrpcm.pause();
           play_flag = LOW;
        }
        toggle_LED();       
        break;
        
   case (1 << PINF4):   // Volume up button on PF4
-//       tmrpcm.volume(1); 
+       tmrpcm.volume(1); 
        toggle_LED();
        break;
        
   case (1 << PINF1):    // Volume down button on PF1
-//       tmrpcm.volume(0); 
+       tmrpcm.volume(0); 
        toggle_LED();
        break;
 
   case (1 << PINF5):    // Play next file
       toggle_LED();
       if (currentSong < songCtr){
-//          tmrpcm.disable();   // Disable so we can acces the SD card
+          tmrpcm.disable();   // Disable so we can acces the SD card
           currentSong++;
 //          Serial.print("Counter: ");
 //          Serial.println(currentSong);
           find_music(currentSong);
-          Serial.println(song_name);
-//          tmrpcm.play(song_name);
           PrintToOLED(song_name); 
+//          Serial.println(song_name);
+          tmrpcm.play(song_name);
       }
       break;
 
   case (1 << PINF6):    // Play previous file
       toggle_LED();
       if (currentSong > 0){
-//          tmrpcm.disable();   // Disable so we can acces the SD card
+          tmrpcm.disable();   // Disable so we can acces the SD card
           currentSong--;
 //          Serial.print("Counter: ");
 //          Serial.println(currentSong);
-          find_music(currentSong);     
-          Serial.println(song_name);
-//          tmrpcm.play(song_name);   
-          PrintToOLED(song_name);    
+          find_music(currentSong);   
+          PrintToOLED(song_name);     
+//          Serial.println(song_name);
+          tmrpcm.play(song_name);    
       }
       break;     
 
@@ -166,9 +166,9 @@ void loop(){
    if (currentSong < songCtr){               // if the list has not come to an end
           currentSong++;
           find_music(currentSong);
-//          tmrpcm.play(song_name);
-//          Serial.println(song_name);
           PrintToOLED(song_name); 
+          tmrpcm.play(song_name);
+//          Serial.println(song_name);
       }
     else {
       currentSong = 0;                 // if the list has come to an end, reset the counter
