@@ -166,6 +166,7 @@ void loop(){
     else {
       currentSong = 0;                 // if the list has come to an end, reset the counter
       start_playing = LOW;             // and go stop playing mode
+      tmrpcm.disable();                // turn off sound reproduction
     }
     
   }
