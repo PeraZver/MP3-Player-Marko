@@ -220,9 +220,27 @@ root.close();
 }
 
 void PrintToOLED(char* text) {
+/* Display song name and the artist */
+
+  char first_row[21] = {0};
+  char second_row[21] = {0};
+  uint8_t i = 0, space;
   
-oled.clear(); 
-oled.print(text);
+  oled.clear(); 
+  oled.setRow(1);
+  while(text[i] != '-'){
+      first_row[i] = text[i];
+      i++;
+  }
+  i+=2;  // Skip "- " between the artist and the song name
+  space = i;
+  
+  oled.println(first_row);
+  while (text[i] != '.'){
+      second_row[i - space] = text[i];
+      i++;
+  }
+  oled.println(second_row);
 }
 
 void AVRSetup(){
